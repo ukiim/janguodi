@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#E8D5B8"/>
+  <!-- Basket shape -->
+  <path d="M310 200 L490 200 L470 360 Q400 380 330 360 Z" fill="#C4A265" stroke="#8B6914" stroke-width="3"/>
+  <!-- Basket weave lines -->
+  <line x1="320" y1="230" x2="480" y2="230" stroke="#8B6914" stroke-width="1.5"/>
+  <line x1="325" y1="260" x2="475" y2="260" stroke="#8B6914" stroke-width="1.5"/>
+  <line x1="330" y1="290" x2="470" y2="290" stroke="#8B6914" stroke-width="1.5"/>
+  <line x1="335" y1="320" x2="465" y2="320" stroke="#8B6914" stroke-width="1.5"/>
+  <line x1="340" y1="350" x2="460" y2="350" stroke="#8B6914" stroke-width="1.5"/>
+  <!-- Vertical weave -->
+  <line x1="370" y1="200" x2="355" y2="370" stroke="#8B6914" stroke-width="1.5"/>
+  <line x1="400" y1="200" x2="400" y2="375" stroke="#8B6914" stroke-width="1.5"/>
+  <line x1="430" y1="200" x2="445" y2="370" stroke="#8B6914" stroke-width="1.5"/>
+  <!-- Basket rim -->
+  <ellipse cx="400" cy="200" rx="90" ry="15" fill="#D4B276" stroke="#8B6914" stroke-width="3"/>
+  <!-- Label -->
+  <text x="400" y="450" text-anchor="middle" font-family="sans-serif" font-size="36" font-weight="bold" fill="#5C4413">전통 짚공예 키트</text>
+</svg>

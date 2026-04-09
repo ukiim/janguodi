@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#C8E0B8"/>
+  <!-- Sky hint -->
+  <rect width="800" height="200" fill="#C8E0B8"/>
+  <!-- Rice paddy water -->
+  <rect x="100" y="200" width="600" height="180" fill="#A8C8E8" opacity="0.4" rx="5"/>
+  <!-- Paddy lines -->
+  <line x1="100" y1="240" x2="700" y2="240" stroke="#7BA867" stroke-width="2" opacity="0.6"/>
+  <line x1="100" y1="280" x2="700" y2="280" stroke="#7BA867" stroke-width="2" opacity="0.6"/>
+  <line x1="100" y1="320" x2="700" y2="320" stroke="#7BA867" stroke-width="2" opacity="0.6"/>
+  <line x1="100" y1="360" x2="700" y2="360" stroke="#7BA867" stroke-width="2" opacity="0.6"/>
+  <!-- Rice seedlings row 1 -->
+  <g fill="#4A8C2A">
+    <line x1="200" y1="260" x2="200" y2="230" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="195" y1="235" x2="205" y2="230" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="300" y1="260" x2="300" y2="230" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="295" y1="235" x2="305" y2="230" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="400" y1="260" x2="400" y2="230" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="395" y1="235" x2="405" y2="230" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="500" y1="260" x2="500" y2="230" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="495" y1="235" x2="505" y2="230" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="600" y1="260" x2="600" y2="230" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="595" y1="235" x2="605" y2="230" stroke="#4A8C2A" stroke-width="2"/>
+  </g>
+  <!-- Rice seedlings row 2 -->
+  <g fill="#4A8C2A">
+    <line x1="250" y1="300" x2="250" y2="270" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="245" y1="275" x2="255" y2="270" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="350" y1="300" x2="350" y2="270" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="345" y1="275" x2="355" y2="270" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="450" y1="300" x2="450" y2="270" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="445" y1="275" x2="455" y2="270" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="550" y1="300" x2="550" y2="270" stroke="#4A8C2A" stroke-width="2"/>
+    <line x1="545" y1="275" x2="555" y2="270" stroke="#4A8C2A" stroke-width="2"/>
+  </g>
+  <!-- Mountains in background -->
+  <path d="M0 200 L150 120 L300 200" fill="#A8C898" opacity="0.5"/>
+  <path d="M250 200 L450 90 L650 200" fill="#B0D0A0" opacity="0.4"/>
+  <path d="M500 200 L700 130 L800 200" fill="#A8C898" opacity="0.5"/>
+  <!-- Label -->
+  <text x="400" y="460" text-anchor="middle" font-family="sans-serif" font-size="40" font-weight="bold" fill="#2D5A1E">논농사 체험</text>
+</svg>

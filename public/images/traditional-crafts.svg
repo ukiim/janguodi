@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#E8D8C0"/>
+  <!-- Scissors shape (craft tool) -->
+  <circle cx="355" cy="230" r="35" fill="none" stroke="#7A5A3A" stroke-width="4"/>
+  <circle cx="445" cy="230" r="35" fill="none" stroke="#7A5A3A" stroke-width="4"/>
+  <line x1="380" y1="250" x2="440" y2="370" stroke="#7A5A3A" stroke-width="5" stroke-linecap="round"/>
+  <line x1="420" y1="250" x2="360" y2="370" stroke="#7A5A3A" stroke-width="5" stroke-linecap="round"/>
+  <!-- Thread/yarn -->
+  <path d="M320 340 Q300 310 310 280 Q320 260 340 270" fill="none" stroke="#C06040" stroke-width="3"/>
+  <path d="M480 340 Q500 310 490 280 Q480 260 460 270" fill="none" stroke="#4A6FA5" stroke-width="3"/>
+  <!-- Fabric piece -->
+  <rect x="350" y="370" width="100" height="30" fill="#C9A0DC" stroke="#9B6DB0" stroke-width="1.5" rx="3"/>
+  <!-- Label -->
+  <text x="400" y="470" text-anchor="middle" font-family="sans-serif" font-size="40" font-weight="bold" fill="#5C3A1A">전통 공예</text>
+</svg>

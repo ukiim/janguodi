@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#C0E0D0"/>
+  <!-- Butterfly -->
+  <!-- Left wings -->
+  <path d="M400 270 Q330 200 310 240 Q290 290 400 290" fill="#E88040" opacity="0.8" stroke="#C06830" stroke-width="2"/>
+  <path d="M400 290 Q290 300 300 350 Q320 390 400 320" fill="#E8A060" opacity="0.8" stroke="#C06830" stroke-width="2"/>
+  <!-- Right wings -->
+  <path d="M400 270 Q470 200 490 240 Q510 290 400 290" fill="#E88040" opacity="0.8" stroke="#C06830" stroke-width="2"/>
+  <path d="M400 290 Q510 300 500 350 Q480 390 400 320" fill="#E8A060" opacity="0.8" stroke="#C06830" stroke-width="2"/>
+  <!-- Body -->
+  <ellipse cx="400" cy="290" rx="6" ry="30" fill="#5A3A20"/>
+  <!-- Antennae -->
+  <path d="M398 262 Q385 230 370 220" fill="none" stroke="#5A3A20" stroke-width="2"/>
+  <path d="M402 262 Q415 230 430 220" fill="none" stroke="#5A3A20" stroke-width="2"/>
+  <circle cx="370" cy="218" r="4" fill="#5A3A20"/>
+  <circle cx="430" cy="218" r="4" fill="#5A3A20"/>
+  <!-- Wing spots -->
+  <circle cx="350" cy="260" r="10" fill="#F5E080" opacity="0.7"/>
+  <circle cx="450" cy="260" r="10" fill="#F5E080" opacity="0.7"/>
+  <circle cx="340" cy="330" r="8" fill="#F5E080" opacity="0.7"/>
+  <circle cx="460" cy="330" r="8" fill="#F5E080" opacity="0.7"/>
+  <!-- Small flowers below -->
+  <circle cx="300" cy="430" r="8" fill="#E87090"/>
+  <circle cx="320" cy="420" r="6" fill="#F0A0B0"/>
+  <circle cx="480" cy="425" r="7" fill="#E87090"/>
+  <circle cx="500" cy="435" r="6" fill="#F0A0B0"/>
+  <!-- Label -->
+  <text x="400" y="500" text-anchor="middle" font-family="sans-serif" font-size="40" font-weight="bold" fill="#1A5A3A">곤충 생태 탐험</text>
+</svg>

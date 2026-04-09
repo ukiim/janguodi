@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#F0E0B0"/>
+  <!-- Honeycomb hexagons -->
+  <polygon points="400,180 435,200 435,240 400,260 365,240 365,200" fill="#F5C842" stroke="#D4A017" stroke-width="2"/>
+  <polygon points="400,260 435,280 435,320 400,340 365,320 365,280" fill="#F5C842" stroke="#D4A017" stroke-width="2"/>
+  <polygon points="335,220 370,240 370,280 335,300 300,280 300,240" fill="#F5C842" stroke="#D4A017" stroke-width="2"/>
+  <polygon points="465,220 500,240 500,280 465,300 430,280 430,240" fill="#F5C842" stroke="#D4A017" stroke-width="2"/>
+  <polygon points="335,300 370,320 370,360 335,380 300,360 300,320" fill="#F5C842" stroke="#D4A017" stroke-width="2"/>
+  <polygon points="465,300 500,320 500,360 465,380 430,360 430,320" fill="#F5C842" stroke="#D4A017" stroke-width="2"/>
+  <polygon points="400,340 435,360 435,400 400,420 365,400 365,360" fill="#F5C842" stroke="#D4A017" stroke-width="2"/>
+  <!-- Honey drip -->
+  <path d="M400 420 Q400 445 395 460 Q400 470 405 460 Q400 445 400 420Z" fill="#D4A017" opacity="0.7"/>
+  <!-- Label -->
+  <text x="400" y="510" text-anchor="middle" font-family="sans-serif" font-size="36" font-weight="bold" fill="#7A5A0A">꿀</text>
+</svg>
