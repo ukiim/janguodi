@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect x="10" y="10" width="380" height="280" rx="20" ry="20" fill="#C8E0C0"/>
+  <!-- Sky gradient hint -->
+  <rect x="10" y="10" width="380" height="140" rx="20" ry="20" fill="#D8EED8" opacity="0.5"/>
+  <!-- Distant hills -->
+  <ellipse cx="120" cy="160" rx="100" ry="40" fill="#90C080"/>
+  <ellipse cx="300" cy="155" rx="110" ry="45" fill="#85B875"/>
+  <!-- Trees -->
+  <!-- Left tree -->
+  <rect x="95" y="130" width="10" height="50" fill="#6B4A14"/>
+  <ellipse cx="100" cy="110" rx="30" ry="30" fill="#5A9E3A"/>
+  <ellipse cx="90" cy="115" rx="20" ry="22" fill="#6BAE4A"/>
+  <ellipse cx="110" cy="112" rx="22" ry="24" fill="#6BAE4A"/>
+  <!-- Right tree -->
+  <rect x="275" y="125" width="10" height="55" fill="#6B4A14"/>
+  <ellipse cx="280" cy="105" rx="32" ry="32" fill="#5A9E3A"/>
+  <ellipse cx="270" cy="110" rx="22" ry="24" fill="#6BAE4A"/>
+  <ellipse cx="292" cy="108" rx="24" ry="26" fill="#6BAE4A"/>
+  <!-- Path -->
+  <path d="M170 250 Q200 200 200 180 Q200 160 210 140" stroke="#C4A870" stroke-width="20" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <path d="M230 250 Q210 205 208 185 Q206 165 215 140" stroke="#C4A870" stroke-width="20" fill="none" stroke-linecap="round" opacity="0.4"/>
+  <!-- Small flowers -->
+  <circle cx="140" cy="200" r="4" fill="#E888A0"/>
+  <circle cx="145" cy="195" r="3" fill="#F0A0B0"/>
+  <circle cx="260" cy="195" r="4" fill="#E888A0"/>
+  <circle cx="255" cy="190" r="3" fill="#F0A0B0"/>
+  <circle cx="160" cy="210" r="3" fill="#F0C040"/>
+  <circle cx="245" cy="205" r="3" fill="#F0C040"/>
+  <!-- Butterflies -->
+  <!-- Butterfly 1 -->
+  <ellipse cx="175" cy="90" rx="8" ry="5" fill="#E090D0" transform="rotate(-20 175 90)" opacity="0.8"/>
+  <ellipse cx="185" cy="88" rx="8" ry="5" fill="#E090D0" transform="rotate(20 185 88)" opacity="0.8"/>
+  <line x1="178" y1="92" x2="182" y2="86" stroke="#8B4080" stroke-width="1"/>
+  <!-- Butterfly 2 -->
+  <ellipse cx="300" cy="70" rx="7" ry="4" fill="#90C0E0" transform="rotate(-15 300 70)" opacity="0.8"/>
+  <ellipse cx="308" cy="68" rx="7" ry="4" fill="#90C0E0" transform="rotate(15 308 68)" opacity="0.8"/>
+  <line x1="303" y1="72" x2="306" y2="66" stroke="#4080A0" stroke-width="1"/>
+  <!-- Butterfly 3 -->
+  <ellipse cx="220" cy="60" rx="6" ry="4" fill="#F0D060" transform="rotate(-25 220 60)" opacity="0.8"/>
+  <ellipse cx="228" cy="58" rx="6" ry="4" fill="#F0D060" transform="rotate(25 228 58)" opacity="0.8"/>
+  <line x1="223" y1="62" x2="226" y2="56" stroke="#A09030" stroke-width="1"/>
+  <!-- Grass tufts -->
+  <path d="M50 230 Q55 215 52 230" stroke="#5A9E3A" stroke-width="2" fill="none"/>
+  <path d="M55 230 Q60 210 58 230" stroke="#6BAE4A" stroke-width="2" fill="none"/>
+  <path d="M340 225 Q345 210 342 225" stroke="#5A9E3A" stroke-width="2" fill="none"/>
+  <path d="M345 225 Q350 208 348 225" stroke="#6BAE4A" stroke-width="2" fill="none"/>
+  <!-- Label -->
+  <text x="200" y="275" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#3A6B2A">농장 자연 탐방</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect x="10" y="10" width="380" height="280" rx="20" ry="20" fill="#E0D0E8"/>
+  <!-- Elegant bottle shape -->
+  <path d="M185 230 L185 120 Q185 105 190 100 L190 70 Q190 60 195 58 L205 58 Q210 60 210 70 L210 100 Q215 105 215 120 L215 230 Z" fill="#F0E8F5" stroke="#B090C0" stroke-width="2"/>
+  <!-- Bottle base wider -->
+  <path d="M175 230 Q175 210 185 200 L185 230 Z" fill="#F0E8F5" stroke="#B090C0" stroke-width="2"/>
+  <path d="M215 230 Q225 210 225 230 L215 230 Z" fill="#F0E8F5" stroke="#B090C0" stroke-width="2"/>
+  <line x1="175" y1="230" x2="225" y2="230" stroke="#B090C0" stroke-width="2"/>
+  <!-- Cap -->
+  <rect x="188" y="48" width="24" height="14" rx="3" fill="#5C1A6E"/>
+  <!-- Vinegar liquid -->
+  <rect x="188" y="140" width="24" height="88" rx="2" fill="#8B3DA0" opacity="0.35"/>
+  <path d="M178 210 Q178 200 185 195 L185 230 L175 230 Q175 220 178 210" fill="#8B3DA0" opacity="0.3"/>
+  <path d="M222 210 Q222 200 215 195 L215 230 L225 230 Q225 220 222 210" fill="#8B3DA0" opacity="0.3"/>
+  <!-- Label -->
+  <rect x="178" y="150" width="44" height="60" rx="4" fill="#FFFAF0"/>
+  <rect x="178" y="150" width="44" height="60" rx="4" stroke="#B090C0" stroke-width="1" fill="none"/>
+  <text x="200" y="168" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#5C1A6E">오디</text>
+  <text x="200" y="180" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#5C1A6E">식초</text>
+  <text x="200" y="195" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#8B6914">VINEGAR</text>
+  <text x="200" y="205" text-anchor="middle" font-family="sans-serif" font-size="5" fill="#999">Natural</text>
+  <!-- Decorative elements -->
+  <circle cx="130" cy="160" r="5" fill="#4A1259" opacity="0.6"/>
+  <circle cx="124" cy="155" r="4" fill="#5C1A6E" opacity="0.6"/>
+  <circle cx="127" cy="167" r="4" fill="#6B2080" opacity="0.6"/>
+  <ellipse cx="120" cy="148" rx="7" ry="4" fill="#6B9E4A" opacity="0.6" transform="rotate(-25 120 148)"/>
+  <circle cx="270" cy="158" r="5" fill="#4A1259" opacity="0.6"/>
+  <circle cx="276" cy="153" r="4" fill="#5C1A6E" opacity="0.6"/>
+  <circle cx="273" cy="165" r="4" fill="#6B2080" opacity="0.6"/>
+  <ellipse cx="280" cy="146" rx="7" ry="4" fill="#6B9E4A" opacity="0.6" transform="rotate(25 280 146)"/>
+  <!-- Shadow -->
+  <ellipse cx="200" cy="238" rx="35" ry="6" fill="#B090C0" opacity="0.3"/>
+  <!-- Label -->
+  <text x="200" y="270" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#5C1A6E">오디 식초</text>
+</svg>

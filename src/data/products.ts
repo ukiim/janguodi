@@ -7,12 +7,12 @@
 export const STORE_BASE = "https://smartstore.naver.com/lifeinsedu";
 
 const PRODUCT_IDS: Record<string, string> = {
-  rice: "TODO_PRODUCT_ID",
-  handkerchief: "TODO_PRODUCT_ID",
-  "straw-kit": "TODO_PRODUCT_ID",
-  vegetables: "TODO_PRODUCT_ID",
-  honey: "TODO_PRODUCT_ID",
-  "insect-kit": "TODO_PRODUCT_ID",
+  "mulberry-jam": "TODO_PRODUCT_ID",
+  "mulberry-juice": "TODO_PRODUCT_ID",
+  "fresh-citrus": "TODO_PRODUCT_ID",
+  "citrus-cheong": "TODO_PRODUCT_ID",
+  "mulberry-vinegar": "TODO_PRODUCT_ID",
+  "gift-set": "TODO_PRODUCT_ID",
 };
 
 function productUrl(key: string): string {
@@ -34,60 +34,61 @@ export interface Product {
 export const products: Product[] = [
   {
     id: "1",
-    name: "유기농 쌀 (5kg)",
+    name: "수제 오디잼 (300g)",
     description:
-      "체험 농장에서 직접 재배한 친환경 유기농 쌀. 갓 도정한 신선한 쌀을 만나보세요.",
-    price: 25000,
-    image: "/images/product-rice.svg",
-    storeUrl: productUrl("rice"),
+      "농장에서 직접 수확한 오디로 만든 수제 잼. 설탕을 최소화하고 오디 본연의 달콤함을 살렸습니다.",
+    price: 15000,
+    image: "/images/product-mulberry-jam.svg",
+    storeUrl: productUrl("mulberry-jam"),
     badge: "인기",
   },
   {
     id: "2",
-    name: "천연 염색 손수건 세트",
+    name: "오디 원액 주스 (500ml)",
     description:
-      "체험 프로그램에서 사용하는 천연 염료로 물들인 손수건 3장 세트입니다.",
+      "100% 오디 착즙 원액. 물이나 탄산수에 희석하여 시원하게 즐기세요. 안토시아닌이 풍부합니다.",
     price: 18000,
-    image: "/images/product-handkerchief.svg",
-    storeUrl: productUrl("handkerchief"),
-  },
-  {
-    id: "3",
-    name: "전통 짚공예 키트",
-    description:
-      "집에서도 즐기는 짚풀 공예! 재료와 설명서가 포함된 DIY 키트입니다.",
-    price: 15000,
-    image: "/images/product-straw-kit.svg",
-    storeUrl: productUrl("straw-kit"),
-    badge: "NEW",
-  },
-  {
-    id: "4",
-    name: "유기농 채소 꾸러미",
-    description:
-      "계절 채소를 엄선하여 담은 유기농 채소 꾸러미. 주 1회 정기배송도 가능합니다.",
-    price: 30000,
-    image: "/images/product-vegetables.svg",
-    storeUrl: productUrl("vegetables"),
-  },
-  {
-    id: "5",
-    name: "꿀 (500g)",
-    description:
-      "체험 농장 인근 양봉장에서 채취한 100% 순수 천연 꿀입니다.",
-    price: 22000,
-    image: "/images/product-honey.svg",
-    storeUrl: productUrl("honey"),
+    image: "/images/product-mulberry-juice.svg",
+    storeUrl: productUrl("mulberry-juice"),
     badge: "인기",
   },
   {
-    id: "6",
-    name: "곤충 관찰 키트",
+    id: "3",
+    name: "하우스 감귤 (3kg)",
     description:
-      "돋보기, 채집통, 관찰 일지가 포함된 어린이 곤충 탐험 키트입니다.",
-    price: 12000,
-    image: "/images/product-insect-kit.svg",
-    storeUrl: productUrl("insect-kit"),
+      "김해장유 하우스에서 재배한 새콤달콤 감귤. 당도 높고 껍질이 얇아 먹기 편합니다.",
+    price: 22000,
+    image: "/images/product-fresh-citrus.svg",
+    storeUrl: productUrl("fresh-citrus"),
+    badge: "제철",
+  },
+  {
+    id: "4",
+    name: "수제 감귤청 (500g)",
+    description:
+      "감귤을 꿀과 함께 숙성시킨 수제 감귤청. 따뜻한 물에 타서 감귤차로, 요거트 토핑으로 활용하세요.",
+    price: 16000,
+    image: "/images/product-citrus-cheong.svg",
+    storeUrl: productUrl("citrus-cheong"),
     badge: "NEW",
+  },
+  {
+    id: "5",
+    name: "오디 발효 식초 (375ml)",
+    description:
+      "오디를 자연 발효시켜 만든 과일 식초. 물에 희석하여 건강 음료로, 샐러드 드레싱으로 활용 가능합니다.",
+    price: 20000,
+    image: "/images/product-mulberry-vinegar.svg",
+    storeUrl: productUrl("mulberry-vinegar"),
+  },
+  {
+    id: "6",
+    name: "오디·감귤 선물세트",
+    description:
+      "오디잼 + 감귤청 + 오디 원액을 예쁜 선물 박스에 담았습니다. 명절·감사 선물로 인기 만점!",
+    price: 45000,
+    image: "/images/product-gift-set.svg",
+    storeUrl: productUrl("gift-set"),
+    badge: "선물용",
   },
 ];

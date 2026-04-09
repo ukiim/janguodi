@@ -28,17 +28,17 @@ export default function HomePage() {
         <div className="container mx-auto px-5 sm:px-6 text-center">
           <Badge variant="secondary" className="mb-4 text-sm">
             <Leaf className="h-3.5 w-3.5 mr-1" />
-            2026 봄 프로그램 예약 시작
+            2026 오디·감귤 체험 예약 시작
           </Badge>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground mb-5 sm:mb-6 leading-snug sm:leading-tight">
-            자연 속에서 배우는
+            김해장유에서 만나는
             <br />
-            <span className="text-primary">농촌 체험 프로그램</span>
+            <span className="text-primary">오디·감귤 체험농장</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-            흙을 만지고, 씨앗을 심고, 자연과 함께 성장하는 특별한 경험.
+            탐스러운 오디를 따고, 새콤달콤한 감귤을 수확하고, 직접 잼도 만들어요.
             <br className="hidden sm:block" />
-            아이들에게 잊지 못할 추억을 선물하세요.
+            가족과 함께 자연 속 특별한 하루를 선물하세요.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
@@ -72,7 +72,7 @@ export default function HomePage() {
               왜 농촌 체험인가요?
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
-              도시에서는 경험할 수 없는 자연과의 교감을 통해 아이들의 감수성과
+              직접 따고, 만들고, 맛보는 오디·감귤 체험으로 아이들의 감수성과
               창의력을 키워줍니다.
             </p>
           </div>
@@ -85,7 +85,7 @@ export default function HomePage() {
                 자연과 교감
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                실제 논밭과 숲에서 직접 흙을 만지고 식물을 키우며 자연의 소중함을
+                오디 농장과 감귤 하우스에서 직접 과일을 따며 자연의 소중함을
                 배웁니다.
               </p>
             </div>
@@ -97,8 +97,8 @@ export default function HomePage() {
                 체험 중심 학습
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                보고, 듣고, 만지는 오감 체험으로 교과서에서 배울 수 없는 살아있는
-                교육을 합니다.
+                오디잼, 감귤청 만들기 등 오감 체험으로 교과서에서 배울 수 없는
+                살아있는 교육을 합니다.
               </p>
             </div>
             <div className="text-center p-5 sm:p-6">
@@ -126,7 +126,7 @@ export default function HomePage() {
                 체험 프로그램
               </h2>
               <p className="text-sm sm:text-base text-muted-foreground">
-                다양한 농촌 체험 프로그램을 만나보세요
+                오디·감귤과 함께하는 다양한 체험을 만나보세요
               </p>
             </div>
             <Link

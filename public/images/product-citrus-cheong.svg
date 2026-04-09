@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect x="10" y="10" width="380" height="280" rx="20" ry="20" fill="#F0E0B0"/>
+  <!-- Jar body -->
+  <rect x="140" y="85" width="120" height="140" rx="12" fill="#FFF8E8"/>
+  <rect x="140" y="85" width="120" height="140" rx="12" stroke="#C4A060" stroke-width="2" fill="none"/>
+  <!-- Jar neck -->
+  <rect x="165" y="65" width="70" height="25" rx="4" fill="#FFF8E8"/>
+  <rect x="165" y="65" width="70" height="25" rx="4" stroke="#C4A060" stroke-width="2" fill="none"/>
+  <!-- Lid -->
+  <rect x="160" y="55" width="80" height="16" rx="5" fill="#D4A44A"/>
+  <!-- Citrus cheong visible inside (golden with citrus slices) -->
+  <rect x="145" y="140" width="110" height="80" rx="10" fill="#F0C840" opacity="0.5"/>
+  <!-- Citrus slices inside jar -->
+  <circle cx="175" cy="170" r="12" fill="#FFD060" opacity="0.7"/>
+  <circle cx="175" cy="170" r="8" fill="#FFF0A0" opacity="0.5"/>
+  <circle cx="210" cy="180" r="10" fill="#FFD060" opacity="0.7"/>
+  <circle cx="210" cy="180" r="7" fill="#FFF0A0" opacity="0.5"/>
+  <circle cx="190" cy="195" r="11" fill="#FFD060" opacity="0.7"/>
+  <circle cx="190" cy="195" r="7" fill="#FFF0A0" opacity="0.5"/>
+  <circle cx="230" cy="165" r="9" fill="#FFD060" opacity="0.7"/>
+  <circle cx="230" cy="165" r="6" fill="#FFF0A0" opacity="0.5"/>
+  <!-- Label on jar -->
+  <rect x="155" y="100" width="90" height="50" rx="6" fill="#FFFAF0"/>
+  <rect x="155" y="100" width="90" height="50" rx="6" stroke="#C4A060" stroke-width="1" fill="none"/>
+  <text x="200" y="120" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#B86800">감귤청</text>
+  <text x="200" y="136" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#A08040">CITRUS CHEONG</text>
+  <text x="200" y="146" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#999">수제 / Homemade</text>
+  <!-- Decorative citrus slices outside -->
+  <circle cx="100" cy="150" r="15" fill="#FFD060" opacity="0.6"/>
+  <circle cx="100" cy="150" r="10" fill="#FFF0A0" opacity="0.4"/>
+  <circle cx="300" cy="145" r="15" fill="#FFD060" opacity="0.6"/>
+  <circle cx="300" cy="145" r="10" fill="#FFF0A0" opacity="0.4"/>
+  <!-- Small leaf -->
+  <ellipse cx="100" cy="133" rx="7" ry="4" fill="#5A9A3A" transform="rotate(-20 100 133)"/>
+  <ellipse cx="300" cy="128" rx="7" ry="4" fill="#5A9A3A" transform="rotate(20 300 128)"/>
+  <!-- Shadow -->
+  <ellipse cx="200" cy="232" rx="65" ry="8" fill="#C4A060" opacity="0.3"/>
+  <!-- Label -->
+  <text x="200" y="270" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#B86800">감귤청</text>
+</svg>

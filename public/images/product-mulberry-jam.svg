@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect x="10" y="10" width="380" height="280" rx="20" ry="20" fill="#E8D0F0"/>
+  <!-- Jar body -->
+  <rect x="145" y="80" width="110" height="140" rx="12" fill="#F0E8F5"/>
+  <rect x="145" y="80" width="110" height="140" rx="12" stroke="#C0A0D0" stroke-width="2" fill="none"/>
+  <!-- Jar neck -->
+  <rect x="165" y="60" width="70" height="25" rx="4" fill="#F0E8F5"/>
+  <rect x="165" y="60" width="70" height="25" rx="4" stroke="#C0A0D0" stroke-width="2" fill="none"/>
+  <!-- Lid with cloth cover -->
+  <ellipse cx="200" cy="55" rx="45" ry="12" fill="#D4A44A"/>
+  <path d="M155 55 Q160 40 200 35 Q240 40 245 55" fill="#F5E0B0" stroke="#C4943A" stroke-width="1"/>
+  <!-- Ribbon -->
+  <rect x="190" y="52" width="20" height="8" rx="2" fill="#C4943A"/>
+  <!-- Jam visible through glass -->
+  <rect x="150" y="130" width="100" height="85" rx="10" fill="#7B2D8E" opacity="0.6"/>
+  <!-- Label on jar -->
+  <rect x="160" y="100" width="80" height="55" rx="6" fill="#FFFAF0"/>
+  <rect x="160" y="100" width="80" height="55" rx="6" stroke="#C0A0D0" stroke-width="1" fill="none"/>
+  <text x="200" y="122" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#5C1A6E">오디잼</text>
+  <text x="200" y="138" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#8B6914">MULBERRY JAM</text>
+  <text x="200" y="150" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#999">수제 / Homemade</text>
+  <!-- Small berry decoration on label -->
+  <circle cx="175" cy="143" r="3" fill="#5C1A6E"/>
+  <circle cx="225" cy="143" r="3" fill="#5C1A6E"/>
+  <!-- Shadow -->
+  <ellipse cx="200" cy="228" rx="60" ry="8" fill="#C0A0D0" opacity="0.3"/>
+  <!-- Label -->
+  <text x="200" y="270" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#5C1A6E">오디잼</text>
+</svg>

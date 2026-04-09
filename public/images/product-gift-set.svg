@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect x="10" y="10" width="380" height="280" rx="20" ry="20" fill="#F0E8D8"/>
+  <!-- Gift box body -->
+  <rect x="120" y="120" width="160" height="110" rx="8" fill="#E8D8C0"/>
+  <rect x="120" y="120" width="160" height="110" rx="8" stroke="#C4A870" stroke-width="2" fill="none"/>
+  <!-- Box lid -->
+  <rect x="115" y="100" width="170" height="28" rx="6" fill="#D4C4A8"/>
+  <rect x="115" y="100" width="170" height="28" rx="6" stroke="#C4A870" stroke-width="2" fill="none"/>
+  <!-- Ribbon vertical -->
+  <rect x="192" y="100" width="16" height="130" fill="#C0445A" opacity="0.8"/>
+  <!-- Ribbon horizontal -->
+  <rect x="115" y="108" width="170" height="14" fill="#C0445A" opacity="0.8"/>
+  <!-- Bow -->
+  <ellipse cx="192" cy="95" rx="20" ry="12" fill="#D05068" transform="rotate(-30 192 95)"/>
+  <ellipse cx="208" cy="95" rx="20" ry="12" fill="#D05068" transform="rotate(30 208 95)"/>
+  <circle cx="200" cy="100" r="6" fill="#C0445A"/>
+  <!-- Ribbon tails -->
+  <path d="M188 100 Q175 80 170 65" stroke="#C0445A" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M212 100 Q225 80 230 65" stroke="#C0445A" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Items peeking from box suggestion -->
+  <!-- Small jar hint -->
+  <rect x="140" y="145" width="30" height="40" rx="4" fill="#E8D0F0" opacity="0.6"/>
+  <text x="155" y="168" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#5C1A6E">잼</text>
+  <!-- Small bottle hint -->
+  <rect x="185" y="140" width="20" height="45" rx="3" fill="#D8C0E8" opacity="0.6"/>
+  <text x="195" y="168" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#5C1A6E">주스</text>
+  <!-- Small citrus jar hint -->
+  <rect x="220" y="145" width="30" height="40" rx="4" fill="#F0E0B0" opacity="0.6"/>
+  <text x="235" y="168" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#B86800">청</text>
+  <!-- Decorative elements -->
+  <circle cx="90" cy="180" r="4" fill="#4A1259" opacity="0.4"/>
+  <circle cx="85" cy="175" r="3" fill="#5C1A6E" opacity="0.4"/>
+  <circle cx="310" cy="175" r="4" fill="#FF9800" opacity="0.4"/>
+  <circle cx="315" cy="180" r="3" fill="#FFA800" opacity="0.4"/>
+  <!-- Small leaf accents -->
+  <ellipse cx="82" cy="170" rx="6" ry="3" fill="#6B9E4A" opacity="0.4" transform="rotate(-20 82 170)"/>
+  <ellipse cx="318" cy="170" rx="6" ry="3" fill="#6B9E4A" opacity="0.4" transform="rotate(20 318 170)"/>
+  <!-- Shadow -->
+  <ellipse cx="200" cy="238" rx="85" ry="8" fill="#C4A870" opacity="0.3"/>
+  <!-- Label -->
+  <text x="200" y="270" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#8B6914">선물 세트</text>
+</svg>
