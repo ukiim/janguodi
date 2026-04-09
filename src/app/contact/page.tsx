@@ -41,7 +41,7 @@ export default function ContactPage() {
                     </div>
                     <div className="flex items-center gap-3">
                       <Mail className="h-4 w-4 text-primary shrink-0" />
-                      <span>info@lifeinsedu.org</span>
+                      <span>info@janguodi.org</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />

@@ -4,7 +4,7 @@
 //       상품 URL 예시: https://smartstore.naver.com/storename/products/1234567890
 // ============================================================
 
-export const STORE_BASE = "https://smartstore.naver.com/lifeinsedu";
+export const STORE_BASE = "https://smartstore.naver.com/janguodi";
 
 const PRODUCT_IDS: Record<string, string> = {
   "mulberry-jam": "TODO_PRODUCT_ID",
