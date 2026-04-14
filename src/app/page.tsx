@@ -257,7 +257,7 @@ export default function HomePage() {
               href="/store"
               className={cn(
                 buttonVariants({ size: "lg", variant: "outline" }),
-                "text-base h-12 px-6 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                "text-base h-12 px-6 bg-transparent border-white/60 text-white hover:bg-white/10"
               )}
             >
               스토어 방문하기
