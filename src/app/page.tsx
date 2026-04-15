@@ -12,7 +12,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { programs } from "@/data/programs";
 import { cn } from "@/lib/utils";
 import {
-  Leaf,
   TreePine,
   Sun,
   CalendarCheck,
@@ -26,10 +25,6 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary/10 via-secondary/30 to-accent/20 py-16 sm:py-24 md:py-32">
         <div className="container mx-auto px-5 sm:px-6 text-center">
-          <Badge variant="secondary" className="mb-4 text-sm">
-            <Leaf className="h-3.5 w-3.5 mr-1" />
-            2026 오디·감귤 체험 예약 시작
-          </Badge>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground mb-5 sm:mb-6 leading-snug sm:leading-tight">
             김해장유에서 만나는
             <br />
