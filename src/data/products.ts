@@ -38,7 +38,7 @@ export const products: Product[] = [
     description:
       "농장에서 직접 수확한 오디로 만든 수제 잼. 설탕을 최소화하고 오디 본연의 달콤함을 살렸습니다.",
     price: 15000,
-    image: "/images/product-mulberry-jam.svg",
+    image: "/images/product-mulberry-jam.jpg",
     storeUrl: productUrl("mulberry-jam"),
     badge: "인기",
   },
@@ -48,7 +48,7 @@ export const products: Product[] = [
     description:
       "100% 오디 착즙 원액. 물이나 탄산수에 희석하여 시원하게 즐기세요. 안토시아닌이 풍부합니다.",
     price: 18000,
-    image: "/images/product-mulberry-juice.svg",
+    image: "/images/product-mulberry-juice.jpg",
     storeUrl: productUrl("mulberry-juice"),
     badge: "인기",
   },
@@ -58,7 +58,7 @@ export const products: Product[] = [
     description:
       "김해장유 하우스에서 재배한 새콤달콤 감귤. 당도 높고 껍질이 얇아 먹기 편합니다.",
     price: 22000,
-    image: "/images/product-fresh-citrus.svg",
+    image: "/images/product-fresh-citrus.jpg",
     storeUrl: productUrl("fresh-citrus"),
     badge: "제철",
   },
@@ -68,7 +68,7 @@ export const products: Product[] = [
     description:
       "감귤을 꿀과 함께 숙성시킨 수제 감귤청. 따뜻한 물에 타서 감귤차로, 요거트 토핑으로 활용하세요.",
     price: 16000,
-    image: "/images/product-citrus-cheong.svg",
+    image: "/images/product-citrus-cheong.jpg",
     storeUrl: productUrl("citrus-cheong"),
     badge: "NEW",
   },
@@ -78,7 +78,7 @@ export const products: Product[] = [
     description:
       "오디를 자연 발효시켜 만든 과일 식초. 물에 희석하여 건강 음료로, 샐러드 드레싱으로 활용 가능합니다.",
     price: 20000,
-    image: "/images/product-mulberry-vinegar.svg",
+    image: "/images/product-mulberry-vinegar.jpg",
     storeUrl: productUrl("mulberry-vinegar"),
   },
   {
@@ -87,7 +87,7 @@ export const products: Product[] = [
     description:
       "오디잼 + 감귤청 + 오디 원액을 예쁜 선물 박스에 담았습니다. 명절·감사 선물로 인기 만점!",
     price: 45000,
-    image: "/images/product-gift-set.svg",
+    image: "/images/product-gift-set.jpg",
     storeUrl: productUrl("gift-set"),
     badge: "선물용",
   },

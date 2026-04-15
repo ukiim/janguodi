@@ -21,7 +21,7 @@ export const programs: Program[] = [
     subtitle: "탐스러운 오디를 직접 따고, 잼과 주스도 만들어요",
     description:
       "김해장유의 넓은 오디 농장에서 잘 익은 오디를 직접 수확하는 체험입니다. 보랏빛으로 물든 오디를 하나씩 따면서 자연의 달콤함을 느끼고, 수확한 오디로 잼과 주스를 만들어 시음합니다. 오디의 영양 성분과 뽕나무의 역사도 함께 배워보세요.",
-    image: "/images/mulberry-picking.svg",
+    image: "/images/mulberry-picking.jpg",
     duration: "2시간 30분",
     capacity: "20~40명",
     target: "유아(5세) 이상",
@@ -83,7 +83,7 @@ export const programs: Program[] = [
     subtitle: "새콤달콤한 감귤을 직접 따고 맛보는 체험",
     description:
       "하우스 감귤 농장에서 노랗게 익은 감귤을 직접 수확하는 체험입니다. 감귤나무 사이를 걸으며 가장 맛있는 감귤을 골라 따고, 신선한 감귤로 주스와 청을 만들어봅니다. 감귤의 품종과 재배 과정도 함께 배우는 유익한 시간입니다.",
-    image: "/images/citrus-picking.svg",
+    image: "/images/citrus-picking.jpg",
     duration: "2시간",
     capacity: "20~40명",
     target: "유아(4세) 이상",
@@ -134,7 +134,7 @@ export const programs: Program[] = [
     subtitle: "수확한 오디로 맛있는 간식을 직접 만들어요",
     description:
       "갓 수확한 신선한 오디를 활용하여 오디잼, 오디떡, 오디 쿠키 등 다양한 간식을 만들어보는 체험입니다. 천연 재료만 사용하여 건강하고 맛있는 간식을 직접 조리하며, 완성된 제품은 예쁘게 포장하여 가져갈 수 있습니다.",
-    image: "/images/mulberry-jam.svg",
+    image: "/images/mulberry-jam.jpg",
     duration: "1시간 30분",
     capacity: "10~25명",
     target: "초등학생 이상",
@@ -185,7 +185,7 @@ export const programs: Program[] = [
     subtitle: "뽕나무 숲과 감귤 하우스를 누비는 자연 탐험",
     description:
       "김해장유 농장 일대를 돌아보며 뽕나무 숲, 감귤 하우스, 텃밭 등 농장 생태를 탐방하는 프로그램입니다. 계절별로 다른 농작물과 곤충, 새들을 관찰하고, 농촌 생태계의 순환을 직접 체험합니다. 누에와 나비의 한살이도 배워볼 수 있습니다.",
-    image: "/images/farm-nature.svg",
+    image: "/images/farm-nature.jpg",
     duration: "2시간",
     capacity: "15~30명",
     target: "유아(5세) 이상",

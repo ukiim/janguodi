@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Leaf, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 export function Footer() {
@@ -9,8 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* 브랜드 */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Leaf className="h-6 w-6 text-primary" />
+            <div className="mb-4">
               <span className="text-lg font-bold text-primary">
                 김해장유오디감귤체험농장
               </span>
