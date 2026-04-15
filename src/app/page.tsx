@@ -138,7 +138,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {programs.map((program) => (
               <Link key={program.slug} href={`/programs/${program.slug}`}>
-                <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer group">
+                <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer group pt-0">
                   <div className="relative aspect-[4/3] bg-gradient-to-br from-primary/5 to-accent/5 rounded-t-lg overflow-hidden">
                     <Image
                       src={program.image}

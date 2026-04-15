@@ -48,7 +48,7 @@ export default function StorePage() {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <Card className="h-full hover:shadow-lg transition-shadow overflow-hidden">
+                <Card className="h-full hover:shadow-lg transition-shadow overflow-hidden pt-0">
                   <div className="relative aspect-square bg-gradient-to-br from-primary/5 to-accent/5 overflow-hidden">
                     <Image
                       src={product.image}
