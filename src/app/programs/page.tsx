@@ -10,9 +10,8 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { programs } from "@/data/programs";
-import { Leaf, Clock, Users, Target, ArrowRight } from "lucide-react";
+import { Clock, Users, Target, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "체험 프로그램",
@@ -42,55 +41,51 @@ export default function ProgramsPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {programs.map((program) => (
-              <Card
-                key={program.slug}
-                className="overflow-hidden hover:shadow-lg transition-shadow group"
-              >
-                <div className="relative aspect-[16/9] bg-gradient-to-br from-primary/5 to-accent/5 overflow-hidden">
-                  <Image
-                    src={program.image}
-                    alt={program.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <CardHeader>
-                  <div className="flex items-center gap-2 mb-1">
-                    <Badge variant="outline">{program.season}</Badge>
+              <Link key={program.slug} href={`/programs/${program.slug}`} className="group">
+                <Card className="overflow-hidden hover:shadow-lg transition-shadow pt-0 h-full cursor-pointer">
+                  <div className="relative aspect-[16/9] bg-gradient-to-br from-primary/5 to-accent/5 overflow-hidden">
+                    <Image
+                      src={program.image}
+                      alt={program.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
                   </div>
-                  <CardTitle className="text-xl">{program.title}</CardTitle>
-                  <CardDescription className="text-base">
-                    {program.subtitle}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                    {program.description}
-                  </p>
-                  <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-6">
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      {program.duration}
+                  <CardHeader>
+                    <div className="flex items-center gap-2 mb-1">
+                      <Badge variant="outline">{program.season}</Badge>
+                    </div>
+                    <CardTitle className="text-xl">{program.title}</CardTitle>
+                    <CardDescription className="text-base">
+                      {program.subtitle}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                      {program.description}
+                    </p>
+                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-6">
+                      <span className="flex items-center gap-1">
+                        <Clock className="h-4 w-4" />
+                        {program.duration}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Users className="h-4 w-4" />
+                        {program.capacity}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Target className="h-4 w-4" />
+                        {program.target}
+                      </span>
+                    </div>
+                    <span className={buttonVariants()}>
+                      자세히 보기
+                      <ArrowRight className="ml-1 h-4 w-4" />
                     </span>
-                    <span className="flex items-center gap-1">
-                      <Users className="h-4 w-4" />
-                      {program.capacity}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Target className="h-4 w-4" />
-                      {program.target}
-                    </span>
-                  </div>
-                  <Link
-                    href={`/programs/${program.slug}`}
-                    className={buttonVariants()}
-                  >
-                    자세히 보기
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
