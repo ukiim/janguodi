@@ -10,7 +10,21 @@
       "Bash(npx shadcn@latest add card accordion badge separator sheet navigation-menu -y)",
       "Bash(npm install:*)",
       "Bash(npm run:*)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx vercel@39 domains rm lifeinsedu.org)",
+      "Bash(npx vercel@39 login)",
+      "Bash(npx vercel@39 login --github)",
+      "Bash(npx vercel:*)",
+      "Bash(yes)",
+      "Bash(dig odifarm.co.kr +short)",
+      "Bash(dig www.odifarm.co.kr +short)",
+      "Bash(curl -sI https://odifarm.co.kr)",
+      "Bash(curl -sL https://odifarm.co.kr)",
+      "Bash(curl -sL https://janguodi.vercel.app)",
+      "Bash(curl -sL https://janguodi-el7bnqu8t-ukiims-projects.vercel.app)",
+      "Bash(curl -sL https://janguodi-2llqupwge-ukiims-projects.vercel.app)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)"
     ]
   }
 }

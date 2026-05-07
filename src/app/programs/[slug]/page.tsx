@@ -13,7 +13,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Separator } from "@/components/ui/separator";
-import { programs } from "@/data/programs";
+import { db, programs as programsTable, reviews as reviewsTable } from "@/db";
+import { and, desc, eq } from "drizzle-orm";
 import {
   Clock,
   Users,
@@ -25,8 +26,29 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-export function generateStaticParams() {
-  return programs.map((p) => ({ slug: p.slug }));
+export const dynamic = "force-dynamic";
+
+export async function generateStaticParams() {
+  try {
+    const rows = await db
+      .select({ slug: programsTable.slug })
+      .from(programsTable)
+      .where(eq(programsTable.isPublished, true));
+    return rows.map((r) => ({ slug: r.slug }));
+  } catch {
+    return [];
+  }
+}
+
+async function loadProgram(slug: string) {
+  const [program] = await db
+    .select()
+    .from(programsTable)
+    .where(
+      and(eq(programsTable.slug, slug), eq(programsTable.isPublished, true))
+    )
+    .limit(1);
+  return program;
 }
 
 export async function generateMetadata({
@@ -35,7 +57,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const program = programs.find((p) => p.slug === slug);
+  const program = await loadProgram(slug);
   if (!program) return {};
   return {
     title: program.title,
@@ -49,8 +71,19 @@ export default async function ProgramDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const program = programs.find((p) => p.slug === slug);
+  const program = await loadProgram(slug);
   if (!program) notFound();
+
+  const programReviews = await db
+    .select()
+    .from(reviewsTable)
+    .where(
+      and(
+        eq(reviewsTable.programSlug, slug),
+        eq(reviewsTable.isPublished, true)
+      )
+    )
+    .orderBy(desc(reviewsTable.createdAt));
 
   return (
     <>
@@ -152,8 +185,8 @@ export default async function ProgramDetailPage({
             <div>
               <h2 className="text-2xl font-bold mb-4">참가 후기</h2>
               <div className="space-y-4">
-                {program.reviews.map((review, i) => (
-                  <Card key={i}>
+                {programReviews.map((review) => (
+                  <Card key={review.id}>
                     <CardContent className="pt-6">
                       <div className="flex gap-0.5 mb-2">
                         {Array.from({ length: review.rating }).map((_, j) => (

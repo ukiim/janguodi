@@ -4,8 +4,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { products, STORE_BASE } from "@/data/products";
+import { STORE_BASE } from "@/data/products";
+import { db, products as productsTable } from "@/db";
+import { asc, eq } from "drizzle-orm";
 import { ShoppingBag, ExternalLink } from "lucide-react";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "스토어",
@@ -17,7 +21,13 @@ function formatPrice(price: number) {
   return new Intl.NumberFormat("ko-KR").format(price);
 }
 
-export default function StorePage() {
+export default async function StorePage() {
+  const products = await db
+    .select()
+    .from(productsTable)
+    .where(eq(productsTable.isPublished, true))
+    .orderBy(asc(productsTable.sortOrder), asc(productsTable.id));
+
   return (
     <>
       {/* Header */}

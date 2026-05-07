@@ -10,16 +10,24 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import { programs } from "@/data/programs";
+import { db, programs as programsTable } from "@/db";
+import { asc, eq } from "drizzle-orm";
 import { Clock, Users, Target, ArrowRight } from "lucide-react";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "체험 프로그램",
   description:
-    "논농사, 텃밭 가꾸기, 전통 공예, 곤충 생태 탐험 등 다양한 농촌 체험 프로그램을 소개합니다.",
+    "오디 수확, 감귤 따기, 잼 만들기 등 다양한 농촌 체험 프로그램을 소개합니다.",
 };
 
-export default function ProgramsPage() {
+export default async function ProgramsPage() {
+  const programs = await db
+    .select()
+    .from(programsTable)
+    .where(eq(programsTable.isPublished, true))
+    .orderBy(asc(programsTable.sortOrder), asc(programsTable.id));
   return (
     <>
       {/* Hero */}

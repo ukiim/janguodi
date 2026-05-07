@@ -9,8 +9,11 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import { programs } from "@/data/programs";
+import { db, programs as programsTable, reviews as reviewsTable } from "@/db";
+import { asc, desc, eq } from "drizzle-orm";
 import { cn } from "@/lib/utils";
+
+export const dynamic = "force-dynamic";
 import {
   TreePine,
   Sun,
@@ -19,7 +22,30 @@ import {
   Star,
 } from "lucide-react";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [programs, recentReviews] = await Promise.all([
+    db
+      .select()
+      .from(programsTable)
+      .where(eq(programsTable.isPublished, true))
+      .orderBy(asc(programsTable.sortOrder), asc(programsTable.id))
+      .limit(4),
+    db
+      .select({
+        id: reviewsTable.id,
+        name: reviewsTable.name,
+        content: reviewsTable.content,
+        rating: reviewsTable.rating,
+        programSlug: reviewsTable.programSlug,
+        programTitle: programsTable.title,
+      })
+      .from(reviewsTable)
+      .leftJoin(programsTable, eq(reviewsTable.programSlug, programsTable.slug))
+      .where(eq(reviewsTable.isPublished, true))
+      .orderBy(desc(reviewsTable.createdAt))
+      .limit(3),
+  ]);
+
   return (
     <>
       {/* Hero Section */}
@@ -194,13 +220,8 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 max-w-4xl mx-auto">
-            {programs
-              .flatMap((p) =>
-                p.reviews.map((r) => ({ ...r, programTitle: p.title }))
-              )
-              .slice(0, 3)
-              .map((review, i) => (
-                <Card key={i}>
+            {recentReviews.map((review) => (
+                <Card key={review.id}>
                   <CardContent className="pt-5 sm:pt-6">
                     <div className="flex gap-0.5 mb-3">
                       {Array.from({ length: review.rating }).map((_, j) => (
@@ -218,7 +239,7 @@ export default function HomePage() {
                         {review.name}
                       </span>
                       <Badge variant="outline" className="text-xs">
-                        {review.programTitle}
+                        {review.programTitle ?? ""}
                       </Badge>
                     </div>
                   </CardContent>
