@@ -2,28 +2,18 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogFooter,
 } from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Plus } from "lucide-react";
+import { Plus, Star } from "lucide-react";
 import { toast } from "sonner";
 import { createReview } from "./actions";
+import { BigInput, BigTextarea, BigToggle } from "@/components/admin/big-input";
+import { cn } from "@/lib/utils";
 
 export function NewReviewDialog({
   programs,
@@ -41,6 +31,14 @@ export function NewReviewDialog({
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
+    if (!programSlug) {
+      toast.error("프로그램을 선택해 주세요.");
+      return;
+    }
+    if (!name.trim() || !content.trim()) {
+      toast.error("작성자와 내용을 입력해 주세요.");
+      return;
+    }
     start(async () => {
       try {
         await createReview({ programSlug, name, content, rating, isPublished });
@@ -48,6 +46,8 @@ export function NewReviewDialog({
         setOpen(false);
         setName("");
         setContent("");
+        setRating(5);
+        setIsPublished(true);
         router.refresh();
       } catch (err) {
         toast.error("추가 중 오류");
@@ -60,77 +60,116 @@ export function NewReviewDialog({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger
         render={
-          <Button>
-            <Plus className="h-4 w-4 mr-1" />새 후기
-          </Button>
+          <button
+            type="button"
+            className={cn(
+              "h-14 px-6 rounded-md text-base font-bold inline-flex items-center gap-1.5",
+              "bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm"
+            )}
+          >
+            <Plus className="h-5 w-5" />
+            새 후기 추가
+          </button>
         }
       />
 
-      <DialogContent>
+      <DialogContent className="max-w-xl">
         <DialogHeader>
-          <DialogTitle>새 후기 추가</DialogTitle>
+          <DialogTitle className="text-xl">새 후기 추가</DialogTitle>
         </DialogHeader>
-        <form onSubmit={submit} className="space-y-4">
+        <form onSubmit={submit} className="space-y-5">
+          {/* 프로그램 선택 — 라디오 형태로 더 명확하게 */}
           <div className="space-y-2">
-            <Label>프로그램</Label>
-            <Select value={programSlug} onValueChange={(v) => setProgramSlug(v ?? "")}>
-              <SelectTrigger>
-                <SelectValue placeholder="프로그램 선택" />
-              </SelectTrigger>
-              <SelectContent>
-                {programs.map((p) => (
-                  <SelectItem key={p.slug} value={p.slug}>
-                    {p.title}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label>작성자</Label>
-            <Input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="space-y-2">
-            <Label>내용</Label>
-            <Textarea
-              rows={4}
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              required
-            />
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label>평점 (1~5)</Label>
-              <Input
-                type="number"
-                min={1}
-                max={5}
-                value={rating}
-                onChange={(e) => setRating(Number(e.target.value))}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label>게시</Label>
-              <label className="flex items-center gap-2 h-9">
-                <input
-                  type="checkbox"
-                  checked={isPublished}
-                  onChange={(e) => setIsPublished(e.target.checked)}
-                />
-                <span className="text-sm">즉시 게시</span>
-              </label>
+            <label className="block text-base font-semibold">
+              어느 프로그램의 후기인가요? <span className="text-destructive">*</span>
+            </label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {programs.map((p) => (
+                <button
+                  key={p.slug}
+                  type="button"
+                  onClick={() => setProgramSlug(p.slug)}
+                  className={cn(
+                    "h-12 px-4 rounded-md border-2 text-sm font-medium text-left transition-colors",
+                    p.slug === programSlug
+                      ? "border-primary bg-primary/10 text-primary"
+                      : "border-border bg-background hover:bg-muted/30"
+                  )}
+                >
+                  {p.title}
+                </button>
+              ))}
             </div>
           </div>
-          <DialogFooter>
-            <Button type="submit" disabled={pending}>
-              {pending ? "추가 중…" : "추가"}
-            </Button>
-          </DialogFooter>
+
+          <BigInput
+            label="작성자 이름"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="예: 김○○"
+          />
+
+          <BigTextarea
+            label="후기 내용"
+            required
+            rows={4}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            placeholder="참가자가 어떤 점이 좋았는지 적어주세요."
+          />
+
+          {/* 별점 — 클릭 가능한 별 5개 */}
+          <div className="space-y-2">
+            <label className="block text-base font-semibold">평점</label>
+            <div className="flex gap-1.5">
+              {[1, 2, 3, 4, 5].map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  onClick={() => setRating(n)}
+                  className="p-1 hover:scale-110 transition-transform"
+                >
+                  <Star
+                    className={cn(
+                      "h-9 w-9",
+                      n <= rating
+                        ? "fill-yellow-400 text-yellow-400"
+                        : "text-muted-foreground/30"
+                    )}
+                  />
+                </button>
+              ))}
+              <span className="ml-2 self-center text-base font-semibold text-muted-foreground">
+                {rating}점
+              </span>
+            </div>
+          </div>
+
+          <BigToggle
+            label="후기 공개"
+            checked={isPublished}
+            onChange={setIsPublished}
+            onText="사이트에 보이기"
+            offText="숨기기"
+          />
+
+          <div className="flex gap-2 pt-4 border-t">
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="h-12 px-5 rounded-md border-2 text-base font-medium hover:bg-muted/50 transition-colors"
+            >
+              취소
+            </button>
+            <button
+              type="submit"
+              disabled={pending}
+              className="h-12 px-6 rounded-md text-base font-bold bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-60 transition-colors flex-1"
+            >
+              {pending ? "추가 중…" : "후기 추가하기"}
+            </button>
+          </div>
         </form>
       </DialogContent>
     </Dialog>

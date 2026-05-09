@@ -2,21 +2,27 @@
 
 import { useTransition } from "react";
 import { Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { deleteProduct } from "./actions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
-export function DeleteProductButton({ id, name }: { id: number; name: string }) {
+export function DeleteProductButton({
+  id,
+  name,
+}: {
+  id: number;
+  name: string;
+}) {
   const [pending, start] = useTransition();
   const router = useRouter();
   return (
-    <Button
-      variant="outline"
-      size="sm"
+    <button
+      type="button"
       disabled={pending}
       onClick={() => {
-        if (!confirm(`"${name}" 상품을 삭제하시겠어요?`)) return;
+        if (!confirm(`"${name}" 상품을 삭제할까요?`)) return;
+        if (!confirm("정말 삭제하시겠어요? 이 작업은 되돌릴 수 없습니다.")) return;
         start(async () => {
           try {
             await deleteProduct(id);
@@ -28,9 +34,15 @@ export function DeleteProductButton({ id, name }: { id: number; name: string }) 
           }
         });
       }}
+      className={cn(
+        "h-12 px-5 rounded-md text-base font-semibold inline-flex items-center",
+        "border-2 border-destructive/40 text-destructive bg-background",
+        "hover:bg-destructive/10 hover:border-destructive transition-colors",
+        "disabled:opacity-50"
+      )}
     >
-      <Trash2 className="h-3.5 w-3.5 mr-1 text-destructive" />
-      삭제
-    </Button>
+      <Trash2 className="h-4 w-4 mr-1.5" />
+      삭제하기
+    </button>
   );
 }

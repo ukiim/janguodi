@@ -1,11 +1,11 @@
 "use client";
 
 import { useTransition } from "react";
-import { Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Trash2, Eye, EyeOff } from "lucide-react";
 import { togglePublishReview, deleteReview } from "./actions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export function ReviewActions({
   id,
@@ -21,14 +21,13 @@ export function ReviewActions({
 
   if (mode === "toggle") {
     return (
-      <input
-        type="checkbox"
-        checked={isPublished}
+      <button
+        type="button"
         disabled={pending}
-        onChange={(e) =>
+        onClick={() =>
           start(async () => {
             try {
-              await togglePublishReview(id, e.target.checked);
+              await togglePublishReview(id, !isPublished);
               router.refresh();
             } catch (err) {
               toast.error("변경 중 오류");
@@ -36,18 +35,34 @@ export function ReviewActions({
             }
           })
         }
-        className="h-4 w-4"
-      />
+        className={cn(
+          "h-10 px-4 rounded-md text-sm font-semibold inline-flex items-center gap-1.5 border-2 transition-colors",
+          isPublished
+            ? "border-primary/40 text-primary bg-primary/5 hover:bg-primary/10"
+            : "border-border bg-muted/30 text-muted-foreground hover:bg-muted/50"
+        )}
+      >
+        {isPublished ? (
+          <>
+            <Eye className="h-3.5 w-3.5" />
+            게시중
+          </>
+        ) : (
+          <>
+            <EyeOff className="h-3.5 w-3.5" />
+            숨김
+          </>
+        )}
+      </button>
     );
   }
 
   return (
-    <Button
-      variant="outline"
-      size="sm"
+    <button
+      type="button"
       disabled={pending}
       onClick={() => {
-        if (!confirm("이 후기를 삭제하시겠어요?")) return;
+        if (!confirm("이 후기를 삭제할까요? 되돌릴 수 없습니다.")) return;
         start(async () => {
           try {
             await deleteReview(id);
@@ -59,8 +74,15 @@ export function ReviewActions({
           }
         });
       }}
+      className={cn(
+        "h-10 px-3 rounded-md text-sm font-semibold inline-flex items-center gap-1.5",
+        "border-2 border-destructive/40 text-destructive bg-background",
+        "hover:bg-destructive/10 hover:border-destructive transition-colors",
+        "disabled:opacity-50"
+      )}
     >
-      <Trash2 className="h-3.5 w-3.5 text-destructive" />
-    </Button>
+      <Trash2 className="h-3.5 w-3.5" />
+      삭제
+    </button>
   );
 }
