@@ -44,6 +44,7 @@ export const programs = pgTable("programs", {
     .$type<{ question: string; answer: string }[]>()
     .notNull()
     .default([]),
+  gallery: jsonb("gallery").$type<string[]>().notNull().default([]),
   sortOrder: integer("sort_order").notNull().default(0),
   isPublished: boolean("is_published").notNull().default(true),
   createdAt: timestamp("created_at").defaultNow().notNull(),

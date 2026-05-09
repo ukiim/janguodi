@@ -16,6 +16,7 @@ import {
 } from "@/components/admin/big-input";
 import { ArrayCardField } from "@/components/admin/array-card-field";
 import { ImagePicker } from "@/components/admin/image-picker";
+import { GalleryPicker } from "@/components/admin/gallery-picker";
 import { StickyFormActions } from "@/components/admin/sticky-form-actions";
 import { SlugInput } from "@/components/admin/slug-input";
 
@@ -32,6 +33,7 @@ const empty: ProgramFormData = {
   highlights: [""],
   schedule: [{ time: "", activity: "" }],
   faq: [{ question: "", answer: "" }],
+  gallery: [],
   sortOrder: 0,
   isPublished: true,
 };
@@ -58,6 +60,7 @@ export function ProgramForm({ initial }: { initial?: Program }) {
           faq: initial.faq.length
             ? initial.faq
             : [{ question: "", answer: "" }],
+          gallery: initial.gallery ?? [],
           sortOrder: initial.sortOrder,
           isPublished: initial.isPublished,
         }
@@ -167,13 +170,21 @@ export function ProgramForm({ initial }: { initial?: Program }) {
       </FormSection>
 
       {/* 3. 사진 */}
-      <FormSection title="대표 사진" step={3}>
+      <FormSection title="사진" step={3}>
         <ImagePicker
+          label="대표 사진"
           required
           value={data.image}
           onChange={(v) => update("image", v)}
           catalog="program"
         />
+        <div className="border-t pt-6">
+          <GalleryPicker
+            value={data.gallery}
+            onChange={(v) => update("gallery", v)}
+            catalog="program"
+          />
+        </div>
       </FormSection>
 
       {/* 4. 체험 내용 */}

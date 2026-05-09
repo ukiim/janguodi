@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { buttonVariants } from "@/components/ui/button";
@@ -164,22 +165,28 @@ export default async function ProgramDetailPage({
               </div>
             </div>
 
-            {/* Gallery Placeholder */}
-            <div>
-              <h2 className="text-2xl font-bold mb-4">갤러리</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {[1, 2, 3, 4, 5, 6].map((i) => (
-                  <div
-                    key={i}
-                    className="aspect-square bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center"
-                  >
-                    <span className="text-sm text-muted-foreground">
-                      사진 {i}
-                    </span>
-                  </div>
-                ))}
+            {/* Gallery */}
+            {program.gallery && program.gallery.length > 0 && (
+              <div>
+                <h2 className="text-2xl font-bold mb-4">갤러리</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {program.gallery.map((src, i) => (
+                    <div
+                      key={`${src}-${i}`}
+                      className="aspect-square bg-muted/30 rounded-lg overflow-hidden relative"
+                    >
+                      <Image
+                        src={src}
+                        alt={`${program.title} 사진 ${i + 1}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Reviews */}
             <div>

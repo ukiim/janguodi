@@ -18,6 +18,7 @@ export type ProgramFormData = {
   highlights: string[];
   schedule: { time: string; activity: string }[];
   faq: { question: string; answer: string }[];
+  gallery: string[];
   sortOrder: number;
   isPublished: boolean;
 };
@@ -36,6 +37,7 @@ function buildPayload(data: ProgramFormData): NewProgram {
     highlights: (data.highlights || []).filter((h) => h.trim()),
     schedule: (data.schedule || []).filter((s) => s.time && s.activity),
     faq: (data.faq || []).filter((f) => f.question && f.answer),
+    gallery: (data.gallery || []).filter((g) => g.trim()),
     sortOrder: Number(data.sortOrder) || 0,
     isPublished: !!data.isPublished,
     updatedAt: new Date(),
