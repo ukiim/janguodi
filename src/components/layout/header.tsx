@@ -10,9 +10,9 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { href: "/", label: "홈" },
   { href: "/programs", label: "체험 프로그램" },
-  { href: "/reservation", label: "예약하기" },
   { href: "/store", label: "스토어" },
-  { href: "/about", label: "센터 소개" },
+  { href: "/notices", label: "공지사항" },
+  { href: "/sns", label: "소식" },
   { href: "/contact", label: "문의하기" },
 ];
 

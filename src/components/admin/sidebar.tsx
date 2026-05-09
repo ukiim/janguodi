@@ -2,7 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Sprout, ShoppingBag, Star, ExternalLink } from "lucide-react";
+import {
+  LayoutDashboard,
+  Sprout,
+  ShoppingBag,
+  Star,
+  Megaphone,
+  Settings,
+  ExternalLink,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LogoutButton } from "./logout-button";
 
@@ -11,6 +19,8 @@ const navItems = [
   { href: "/admin/programs", label: "프로그램", icon: Sprout },
   { href: "/admin/products", label: "상품", icon: ShoppingBag },
   { href: "/admin/reviews", label: "후기", icon: Star },
+  { href: "/admin/notices", label: "공지사항", icon: Megaphone },
+  { href: "/admin/settings", label: "설정", icon: Settings },
 ];
 
 export function AdminSidebar({ userEmail }: { userEmail?: string | null }) {

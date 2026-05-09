@@ -100,6 +100,32 @@ export const analyticsEvents = pgTable(
   })
 );
 
+// ============================================================
+// 공지사항
+// ============================================================
+export const notices = pgTable("notices", {
+  id: serial("id").primaryKey(),
+  title: varchar("title", { length: 200 }).notNull(),
+  content: text("content").notNull(),
+  isImportant: boolean("is_important").notNull().default(false),
+  isPublished: boolean("is_published").notNull().default(true),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+// ============================================================
+// 사이트 설정 (소셜 URL 등)
+// ============================================================
+export const siteSettings = pgTable("site_settings", {
+  key: varchar("key", { length: 100 }).primaryKey(),
+  value: text("value").notNull().default(""),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export type Notice = typeof notices.$inferSelect;
+export type NewNotice = typeof notices.$inferInsert;
+export type SiteSetting = typeof siteSettings.$inferSelect;
+
 export type Program = typeof programs.$inferSelect;
 export type NewProgram = typeof programs.$inferInsert;
 export type Product = typeof products.$inferSelect;

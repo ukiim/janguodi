@@ -51,10 +51,18 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="/notices"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  센터 소개
+                  공지사항
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/sns"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  소식
                 </Link>
               </li>
             </ul>
