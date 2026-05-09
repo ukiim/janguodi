@@ -2,21 +2,33 @@
 
 import { useTransition } from "react";
 import { Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { deleteProgram } from "./actions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
-export function DeleteProgramButton({ id, title }: { id: number; title: string }) {
+export function DeleteProgramButton({
+  id,
+  title,
+}: {
+  id: number;
+  title: string;
+}) {
   const [pending, start] = useTransition();
   const router = useRouter();
   return (
-    <Button
-      variant="outline"
-      size="sm"
+    <button
+      type="button"
       disabled={pending}
       onClick={() => {
-        if (!confirm(`"${title}" 프로그램을 삭제하시겠어요?`)) return;
+        // 두 번 확인
+        if (!confirm(`"${title}" 프로그램을 삭제할까요?`)) return;
+        if (
+          !confirm(
+            "정말 삭제하시겠어요? 이 작업은 되돌릴 수 없습니다."
+          )
+        )
+          return;
         start(async () => {
           try {
             await deleteProgram(id);
@@ -28,9 +40,15 @@ export function DeleteProgramButton({ id, title }: { id: number; title: string }
           }
         });
       }}
+      className={cn(
+        "h-12 px-5 rounded-md text-base font-semibold inline-flex items-center",
+        "border-2 border-destructive/40 text-destructive bg-background",
+        "hover:bg-destructive/10 hover:border-destructive transition-colors",
+        "disabled:opacity-50"
+      )}
     >
-      <Trash2 className="h-3.5 w-3.5 mr-1 text-destructive" />
-      삭제
-    </Button>
+      <Trash2 className="h-4 w-4 mr-1.5" />
+      삭제하기
+    </button>
   );
 }
