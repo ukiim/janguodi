@@ -65,7 +65,7 @@ export default async function SnsPage() {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="flex items-center gap-3 mb-6">
-            <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 text-white">
+            <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-primary-foreground">
               <Camera className="h-5 w-5" />
             </div>
             <div className="flex-1">
@@ -97,9 +97,9 @@ export default async function SnsPage() {
                   href={instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block bg-gradient-to-br from-pink-50 via-orange-50 to-yellow-50 p-12 text-center hover:opacity-90 transition-opacity"
+                  className="block bg-gradient-to-br from-secondary via-muted to-secondary p-12 text-center hover:opacity-90 transition-opacity"
                 >
-                  <Camera className="h-16 w-16 mx-auto mb-4 text-pink-500" />
+                  <Camera className="h-16 w-16 mx-auto mb-4 text-primary" />
                   <p className="text-lg font-semibold mb-2">
                     {settings.instagram_handle
                       ? `@${settings.instagram_handle}`
@@ -114,7 +114,7 @@ export default async function SnsPage() {
                   <span
                     className={cn(
                       buttonVariants({ size: "lg" }),
-                      "bg-gradient-to-r from-pink-500 to-orange-500 hover:opacity-90 border-0 text-white"
+                      "h-13 px-7"
                     )}
                   >
                     인스타그램 방문하기
@@ -133,7 +133,7 @@ export default async function SnsPage() {
       <section className="py-12 md:py-16 bg-muted/30">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="flex items-center gap-3 mb-6">
-            <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#03C75A] text-white text-lg font-extrabold">
+            <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-primary-foreground text-lg font-extrabold">
               N
             </div>
             <div className="flex-1">

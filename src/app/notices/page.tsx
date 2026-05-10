@@ -65,7 +65,7 @@ export default async function NoticesPage() {
                     <CardContent className="pt-5 pb-5">
                       <div className="flex items-center gap-3 flex-wrap mb-1.5">
                         {n.isImportant && (
-                          <Badge className="text-xs bg-destructive text-destructive-foreground border-0">
+                          <Badge className="text-xs bg-primary text-primary-foreground border-0 font-bold">
                             <AlertCircle className="h-3 w-3 mr-0.5" />
                             중요
                           </Badge>

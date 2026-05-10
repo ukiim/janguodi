@@ -73,16 +73,16 @@ export function Footer() {
             <h3 className="font-semibold mb-4">연락처</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                <span>02-2262-6549</span>
+                <Phone className="h-4 w-4 text-primary" />
+                <span>055-000-0000</span>
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <span>info@janguodi.org</span>
+                <Mail className="h-4 w-4 text-primary" />
+                <span>info@janguodi.co.kr</span>
               </li>
               <li className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 mt-0.5" />
-                <span>서울특별시 종로구 광화문역 인근</span>
+                <MapPin className="h-4 w-4 mt-0.5 text-primary" />
+                <span>경상남도 김해시 장유 일원</span>
               </li>
             </ul>
           </div>
