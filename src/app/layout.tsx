@@ -1,21 +1,6 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR, Gowun_Batang } from "next/font/google";
 import "./globals.css";
 import { SiteChrome } from "@/components/layout/site-chrome";
-
-const notoSansKR = Noto_Sans_KR({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  display: "swap",
-});
-
-const gowunBatang = Gowun_Batang({
-  variable: "--font-heading-display",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -48,10 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="ko"
-      className={`${notoSansKR.variable} ${gowunBatang.variable} h-full antialiased`}
-    >
+    <html lang="ko" className="h-full antialiased">
       <body className="min-h-full flex flex-col font-sans text-[15px] leading-relaxed md:text-base">
         <SiteChrome>{children}</SiteChrome>
       </body>
