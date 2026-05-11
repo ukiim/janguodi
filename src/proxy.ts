@@ -4,8 +4,9 @@ import { getToken } from "next-auth/jwt";
 /**
  * /admin/* 경로 보호.
  * NextAuth v5의 auth() wrapper 대신 getToken 직접 사용 — Edge 런타임에서도 동작.
+ * (Next.js 16에서 middleware → proxy로 rename됨)
  */
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const isLoginPage = pathname === "/admin/login";
 
