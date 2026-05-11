@@ -13,8 +13,9 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // 미들웨어가 /admin/* 의 인증을 보장 (로그인 페이지 제외).
+  // 로그인 페이지에서는 session=null 이므로 사이드바 없이 표시.
   const session = await auth();
-  // 로그인 페이지는 사이드바 없이 표시
   return (
     <div className="min-h-screen bg-background">
       {session ? (

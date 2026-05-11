@@ -6,13 +6,22 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CalendarCheck, Phone, Clock, Info } from "lucide-react";
 import { NaverReservation } from "@/components/naver-reservation";
+import { getSiteSettings, withFallback } from "@/lib/site-settings";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "예약하기",
   description: "네이버 예약으로 농촌 체험 프로그램을 간편하게 예약하세요.",
 };
 
-export default function ReservationPage() {
+export default async function ReservationPage() {
+  const s = await getSiteSettings();
+  const phone = withFallback(s.contact_phone, "준비 중");
+  const hours = withFallback(
+    s.contact_hours,
+    "평일 09:00~18:00 (주말·공휴일 휴무)"
+  );
   return (
     <>
       {/* Header */}
@@ -78,10 +87,8 @@ export default function ReservationPage() {
                   온라인 예약이 어려우시면 전화로 예약하실 수 있습니다.
                 </p>
                 <div className="space-y-2">
-                  <p className="font-semibold">02-2262-6549</p>
-                  <p className="text-xs text-muted-foreground">
-                    평일 09:00 ~ 18:00 (주말·공휴일 휴무)
-                  </p>
+                  <p className="font-semibold">{phone}</p>
+                  <p className="text-xs text-muted-foreground">{hours}</p>
                 </div>
               </CardContent>
             </Card>
