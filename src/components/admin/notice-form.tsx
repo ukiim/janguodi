@@ -106,7 +106,7 @@ export function NoticeForm({ initial }: { initial?: Notice }) {
           />
         </div>
         <p className="text-sm text-muted-foreground">
-          중요 공지는 목록 위에 빨간 배지와 함께 강조 표시됩니다.
+          중요 공지는 목록 맨 위에 “중요” 배지와 함께 강조 표시됩니다.
         </p>
       </FormSection>
 

@@ -62,7 +62,9 @@ export default async function AdminNoticesPage() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap mb-1">
                   {n.isImportant && (
-                    <Badge className="text-xs bg-destructive text-destructive-foreground border-0">
+                    <Badge
+                      className="text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300"
+                    >
                       <AlertCircle className="h-3 w-3 mr-0.5" />
                       중요
                     </Badge>
