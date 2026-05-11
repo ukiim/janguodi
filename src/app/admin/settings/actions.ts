@@ -4,12 +4,15 @@ import { db, siteSettings } from "@/db";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import type { SettingKey } from "@/lib/site-settings";
+import type { SiteSettings } from "@/lib/site-settings";
 
-export type SettingsFormData = Record<SettingKey, string>;
+export type SettingsFormData = SiteSettings;
 
 export async function saveSettings(data: SettingsFormData) {
-  for (const [key, value] of Object.entries(data) as [SettingKey, string][]) {
+  for (const [key, value] of Object.entries(data) as [
+    keyof SiteSettings,
+    string,
+  ][]) {
     const trimmed = value.trim();
     // upsert
     const existing = await db
@@ -28,6 +31,7 @@ export async function saveSettings(data: SettingsFormData) {
         .values({ key, value: trimmed });
     }
   }
-  revalidatePath("/sns");
+  // 모든 공개 페이지 캐시 무효화 (푸터·연락처·지도 등이 settings 사용)
+  revalidatePath("/", "layout");
   redirect("/admin/settings?saved=1");
 }

@@ -1,19 +1,30 @@
 import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, MessageCircle, Car, Bus } from "lucide-react";
 import { NaverMapEmbed } from "@/components/naver-map-embed";
+import { getSiteSettings, withFallback } from "@/lib/site-settings";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "문의하기",
   description: "김해장유오디감귤체험농장 연락처 및 오시는 길 안내입니다.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const s = await getSiteSettings();
+
+  const phone = withFallback(s.contact_phone, "준비 중");
+  const email = withFallback(s.contact_email, "준비 중");
+  const hours = withFallback(s.contact_hours, "평일 09:00~18:00 (주말·공휴일 휴무)");
+  const address = withFallback(s.location_address, "주소 등록 예정");
+  const directions = s.location_directions.trim();
+  const parking = s.location_parking.trim();
+  const companyName = withFallback(s.footer_company_name, "김해장유오디감귤체험농장");
+
   return (
     <>
-      {/* Header */}
       <section className="bg-gradient-to-br from-primary/10 via-secondary/20 to-background py-16">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">문의하기</h1>
@@ -26,59 +37,35 @@ export default function ContactPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Contact Info */}
+            {/* 연락처 */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold mb-6">연락처 안내</h2>
+              <h2 className="text-2xl font-bold mb-2">연락처</h2>
 
-              {/* Seoul Center */}
               <Card>
                 <CardContent className="pt-6">
-                  <Badge className="mb-3">서울센터</Badge>
+                  <Badge className="mb-4">{companyName}</Badge>
                   <div className="space-y-3 text-sm">
                     <div className="flex items-center gap-3">
                       <Phone className="h-4 w-4 text-primary shrink-0" />
-                      <span className="font-medium">02-2262-6549</span>
+                      <span className="font-medium">{phone}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <Mail className="h-4 w-4 text-primary shrink-0" />
-                      <span>info@janguodi.org</span>
+                      <span>{email}</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                      <span>서울특별시 종로구 광화문역 인근</span>
+                      <span>{address}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <Clock className="h-4 w-4 text-primary shrink-0" />
-                      <span>평일 09:00 ~ 18:00 (주말·공휴일 휴무)</span>
+                      <span>{hours}</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              {/* Busan Center */}
-              <Card>
-                <CardContent className="pt-6">
-                  <Badge variant="secondary" className="mb-3">
-                    부산센터
-                  </Badge>
-                  <div className="space-y-3 text-sm">
-                    <div className="flex items-center gap-3">
-                      <Phone className="h-4 w-4 text-primary shrink-0" />
-                      <span className="font-medium">070-7542-7807</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                      <span>부산광역시 부산진구 범내골역 인근</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Clock className="h-4 w-4 text-primary shrink-0" />
-                      <span>평일 09:00 ~ 18:00 (주말·공휴일 휴무)</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Inquiry Types */}
+              {/* 문의 유형 안내 */}
               <Card>
                 <CardContent className="pt-6">
                   <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
@@ -105,52 +92,34 @@ export default function ContactPage() {
               </Card>
             </div>
 
-            {/* Map */}
+            {/* 오시는 길 */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold mb-6">오시는 길</h2>
+              <h2 className="text-2xl font-bold mb-2">오시는 길</h2>
 
-              {/* Seoul Map */}
               <Card>
                 <CardContent className="pt-6">
-                  <h3 className="font-semibold mb-3">서울센터</h3>
                   <NaverMapEmbed
-                    address="서울특별시 종로구 광화문역"
-                    title="서울센터 지도"
+                    address={address}
+                    title="농장 지도"
                     className="aspect-[4/3] rounded-lg overflow-hidden mb-4"
                   />
-                  <div className="text-sm text-muted-foreground space-y-1">
-                    <p>
-                      <strong>지하철</strong>: 5호선 광화문역 6번 출구 도보 5분
-                    </p>
-                    <p>
-                      <strong>버스</strong>: 광화문 정류장 하차
-                    </p>
-                    <p>
-                      <strong>주차</strong>: 건물 지하 주차장 이용 가능
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Busan Map */}
-              <Card>
-                <CardContent className="pt-6">
-                  <h3 className="font-semibold mb-3">부산센터</h3>
-                  <NaverMapEmbed
-                    address="부산광역시 부산진구 범내골역"
-                    title="부산센터 지도"
-                    className="aspect-[4/3] rounded-lg overflow-hidden mb-4"
-                  />
-                  <div className="text-sm text-muted-foreground space-y-1">
-                    <p>
-                      <strong>지하철</strong>: 2호선 범내골역 1번 출구 도보 3분
-                    </p>
-                    <p>
-                      <strong>버스</strong>: 범내골역 정류장 하차
-                    </p>
-                    <p>
-                      <strong>주차</strong>: 인근 공영주차장 이용
-                    </p>
+                  <div className="text-sm text-muted-foreground space-y-3">
+                    <div className="flex items-start gap-2">
+                      <MapPin className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <span>{address}</span>
+                    </div>
+                    {directions && (
+                      <div className="flex items-start gap-2">
+                        <Bus className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                        <span className="whitespace-pre-line">{directions}</span>
+                      </div>
+                    )}
+                    {parking && (
+                      <div className="flex items-start gap-2">
+                        <Car className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                        <span>{parking}</span>
+                      </div>
+                    )}
                   </div>
                 </CardContent>
               </Card>

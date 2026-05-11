@@ -16,6 +16,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { db, programs as programsTable, reviews as reviewsTable } from "@/db";
 import { and, desc, eq } from "drizzle-orm";
+import { getSiteSettings, withFallback } from "@/lib/site-settings";
 import {
   Clock,
   Users,
@@ -74,6 +75,13 @@ export default async function ProgramDetailPage({
   const { slug } = await params;
   const program = await loadProgram(slug);
   if (!program) notFound();
+
+  const settings = await getSiteSettings();
+  const mapAddress = withFallback(
+    settings.location_address,
+    "경상남도 김해시 장유"
+  );
+  const phone = withFallback(settings.contact_phone, "");
 
   const programReviews = await db
     .select()
@@ -277,16 +285,16 @@ export default async function ProgramDetailPage({
                   오시는 길
                 </h3>
                 <NaverMapEmbed
-                  address="서울특별시 종로구 광화문역"
+                  address={mapAddress}
                   title="오시는 길"
                   className="aspect-[4/3] rounded-lg overflow-hidden mb-3"
                 />
-                <p className="text-sm text-muted-foreground">
-                  서울특별시 종로구 광화문역 인근
-                </p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Tel. 02-2262-6549
-                </p>
+                <p className="text-sm text-muted-foreground">{mapAddress}</p>
+                {phone && (
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Tel. {phone}
+                  </p>
+                )}
               </CardContent>
             </Card>
           </div>

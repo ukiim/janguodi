@@ -8,6 +8,7 @@ import { STORE_BASE } from "@/data/products";
 import { db, products as productsTable } from "@/db";
 import { asc, eq } from "drizzle-orm";
 import { ShoppingBag, ExternalLink } from "lucide-react";
+import { getSiteSettings, withFallback } from "@/lib/site-settings";
 
 export const dynamic = "force-dynamic";
 
@@ -22,11 +23,15 @@ function formatPrice(price: number) {
 }
 
 export default async function StorePage() {
-  const products = await db
-    .select()
-    .from(productsTable)
-    .where(eq(productsTable.isPublished, true))
-    .orderBy(asc(productsTable.sortOrder), asc(productsTable.id));
+  const [products, settings] = await Promise.all([
+    db
+      .select()
+      .from(productsTable)
+      .where(eq(productsTable.isPublished, true))
+      .orderBy(asc(productsTable.sortOrder), asc(productsTable.id)),
+    getSiteSettings(),
+  ]);
+  const storeUrl = withFallback(settings.smartstore_base_url, STORE_BASE);
 
   return (
     <>
@@ -112,7 +117,7 @@ export default async function StorePage() {
             네이버 스마트스토어에서 전체 상품을 확인하세요
           </p>
           <a
-            href={STORE_BASE}
+            href={storeUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={buttonVariants({ size: "lg" })}
