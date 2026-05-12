@@ -73,7 +73,7 @@ export async function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="인스타그램"
-                    className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-border bg-background text-primary hover:bg-accent transition-colors"
+                    className="inline-flex items-center justify-center w-11 h-11 rounded-md border border-border bg-background text-primary hover:bg-accent transition-colors"
                   >
                     <Camera className="h-4 w-4" />
                   </a>
@@ -84,7 +84,7 @@ export async function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="네이버 블로그"
-                    className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-border bg-background text-primary hover:bg-accent transition-colors font-extrabold text-sm"
+                    className="inline-flex items-center justify-center w-11 h-11 rounded-md border border-border bg-background text-primary hover:bg-accent transition-colors font-extrabold text-sm"
                   >
                     N
                   </a>
@@ -96,11 +96,11 @@ export async function Footer() {
           {/* 바로가기 */}
           <div>
             <h3 className="font-semibold mb-4">바로가기</h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="text-sm -mt-2">
               <li>
                 <Link
                   href="/programs"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="block py-3 text-muted-foreground hover:text-primary transition-colors"
                 >
                   체험 프로그램
                 </Link>
@@ -108,7 +108,7 @@ export async function Footer() {
               <li>
                 <Link
                   href="/reservation"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="block py-3 text-muted-foreground hover:text-primary transition-colors"
                 >
                   예약하기
                 </Link>
@@ -116,7 +116,7 @@ export async function Footer() {
               <li>
                 <Link
                   href="/store"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="block py-3 text-muted-foreground hover:text-primary transition-colors"
                 >
                   스토어
                 </Link>
@@ -124,7 +124,7 @@ export async function Footer() {
               <li>
                 <Link
                   href="/notices"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="block py-3 text-muted-foreground hover:text-primary transition-colors"
                 >
                   공지사항
                 </Link>
@@ -132,7 +132,7 @@ export async function Footer() {
               <li>
                 <Link
                   href="/sns"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="block py-3 text-muted-foreground hover:text-primary transition-colors"
                 >
                   소식
                 </Link>

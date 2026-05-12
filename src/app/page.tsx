@@ -267,7 +267,10 @@ export default async function HomePage() {
           <div className="mt-6 text-center sm:hidden">
             <Link
               href="/programs"
-              className={buttonVariants({ variant: "outline" })}
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "w-full h-12 text-base"
+              )}
             >
               전체 프로그램 보기
               <ArrowRight className="ml-1 h-4 w-4" />
