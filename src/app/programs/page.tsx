@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { db, programs as programsTable } from "@/db";
 import { asc, eq } from "drizzle-orm";
-import { Clock, Users, Target, ArrowRight } from "lucide-react";
+import { Clock, Users, ArrowRight } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -37,9 +37,7 @@ export default async function ProgramsPage() {
             농촌 체험 프로그램
           </h1>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            자연 속에서 배우고 체험하는 다양한 프로그램을 만나보세요.
-            <br />
-            계절마다 특별한 경험이 여러분을 기다리고 있습니다.
+            계절마다 다른 작물을 직접 수확하고 만들어 봅니다.
           </p>
         </div>
       </section>
@@ -73,7 +71,7 @@ export default async function ProgramsPage() {
                     <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
                       {program.description}
                     </p>
-                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-6">
+                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground mb-6">
                       <span className="flex items-center gap-1">
                         <Clock className="h-4 w-4" />
                         {program.duration}
@@ -82,10 +80,7 @@ export default async function ProgramsPage() {
                         <Users className="h-4 w-4" />
                         {program.capacity}
                       </span>
-                      <span className="flex items-center gap-1">
-                        <Target className="h-4 w-4" />
-                        {program.target}
-                      </span>
+                      <span>· {program.target}</span>
                     </div>
                     <span className={buttonVariants()}>
                       자세히 보기

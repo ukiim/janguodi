@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { STORE_BASE } from "@/data/products";
 import { db, products as productsTable } from "@/db";
 import { asc, eq } from "drizzle-orm";
-import { ShoppingBag, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { getSiteSettings, withFallback } from "@/lib/site-settings";
 
 export const dynamic = "force-dynamic";
@@ -38,15 +38,10 @@ export default async function StorePage() {
       {/* Header */}
       <section className="bg-gradient-to-br from-primary/10 via-secondary/20 to-background py-16">
         <div className="container mx-auto px-4 text-center">
-          <Badge variant="secondary" className="mb-4">
-            <ShoppingBag className="h-3.5 w-3.5 mr-1" />
-            네이버 스마트스토어
-          </Badge>
           <h1 className="text-3xl md:text-4xl font-bold mb-4">스토어</h1>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            체험 농장에서 직접 재배한 농산물과 체험 키트를 만나보세요.
-            <br />
-            클릭하면 네이버 스마트스토어로 이동합니다.
+            농장에서 직접 만든 가공품과 농산물입니다.
+            상품을 클릭하면 네이버 스마트스토어로 이동합니다.
           </p>
         </div>
       </section>

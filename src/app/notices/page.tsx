@@ -33,13 +33,9 @@ export default async function NoticesPage() {
     <>
       <section className="bg-gradient-to-br from-primary/10 via-secondary/20 to-background py-16">
         <div className="container mx-auto px-4 text-center">
-          <Badge variant="secondary" className="mb-4">
-            <Megaphone className="h-3.5 w-3.5 mr-1" />
-            농장 소식
-          </Badge>
           <h1 className="text-3xl md:text-4xl font-bold mb-3">공지사항</h1>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            체험 일정, 휴무, 이벤트 등 농장의 공식 안내입니다.
+            체험 일정과 휴무, 운영 안내를 모았습니다.
           </p>
         </div>
       </section>

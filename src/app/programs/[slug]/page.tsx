@@ -18,10 +18,6 @@ import { db, programs as programsTable, reviews as reviewsTable } from "@/db";
 import { and, desc, eq } from "drizzle-orm";
 import { getSiteSettings, withFallback } from "@/lib/site-settings";
 import {
-  Clock,
-  Users,
-  Target,
-  CalendarDays,
   Star,
   MapPin,
   ArrowLeft,
@@ -112,23 +108,11 @@ export default async function ProgramDetailPage({
           <p className="text-lg text-muted-foreground mb-6">
             {program.subtitle}
           </p>
-          <div className="flex flex-wrap gap-4 text-sm">
-            <Badge variant="secondary" className="flex items-center gap-1">
-              <Clock className="h-3.5 w-3.5" />
-              {program.duration}
-            </Badge>
-            <Badge variant="secondary" className="flex items-center gap-1">
-              <Users className="h-3.5 w-3.5" />
-              {program.capacity}
-            </Badge>
-            <Badge variant="secondary" className="flex items-center gap-1">
-              <Target className="h-3.5 w-3.5" />
-              {program.target}
-            </Badge>
-            <Badge variant="secondary" className="flex items-center gap-1">
-              <CalendarDays className="h-3.5 w-3.5" />
-              {program.season}
-            </Badge>
+          <div className="flex flex-wrap gap-2 text-sm">
+            <Badge variant="secondary">{program.duration}</Badge>
+            <Badge variant="secondary">{program.capacity}</Badge>
+            <Badge variant="secondary">{program.target}</Badge>
+            <Badge variant="secondary">{program.season}</Badge>
           </div>
         </div>
       </section>

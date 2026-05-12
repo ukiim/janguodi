@@ -27,14 +27,9 @@ export default async function ReservationPage() {
       {/* Header */}
       <section className="bg-gradient-to-br from-primary/10 via-secondary/20 to-background py-16">
         <div className="container mx-auto px-4 text-center">
-          <Badge variant="secondary" className="mb-4">
-            <CalendarCheck className="h-3.5 w-3.5 mr-1" />
-            네이버 예약
-          </Badge>
           <h1 className="text-3xl md:text-4xl font-bold mb-4">예약하기</h1>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            네이버 예약을 통해 원하는 프로그램과 날짜를 선택하여 간편하게
-            예약하세요.
+            아래에서 원하는 프로그램과 날짜를 골라 신청해 주세요.
           </p>
         </div>
       </section>

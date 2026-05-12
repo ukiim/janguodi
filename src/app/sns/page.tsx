@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getSiteSettings } from "@/lib/site-settings";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Camera, ExternalLink, Sparkles } from "lucide-react";
+import { Camera, ExternalLink } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -50,13 +50,9 @@ export default async function SnsPage() {
       {/* Header */}
       <section className="bg-gradient-to-br from-primary/10 via-secondary/20 to-background py-16">
         <div className="container mx-auto px-4 text-center">
-          <Badge variant="secondary" className="mb-4">
-            <Sparkles className="h-3.5 w-3.5 mr-1" />
-            농장 소식
-          </Badge>
           <h1 className="text-3xl md:text-4xl font-bold mb-3">소식</h1>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            인스타그램과 블로그에서 농장의 일상과 체험 후기를 만나보세요.
+            인스타그램과 블로그에서 농장의 이야기를 만나보세요.
           </p>
         </div>
       </section>
@@ -183,7 +179,6 @@ function ComingSoonCard({ label }: { label: string }) {
   return (
     <Card>
       <CardContent className="pt-12 pb-12 text-center text-muted-foreground">
-        <Sparkles className="h-10 w-10 mx-auto mb-3 opacity-40" />
         <p className="text-base">{label}</p>
         <p className="text-xs mt-1 opacity-70">
           어드민 → 설정에서 입력할 수 있습니다.

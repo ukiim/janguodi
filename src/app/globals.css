@@ -133,13 +133,23 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* 한국어 어절 단위 줄바꿈 — 한 글자만 다음 줄로 떨어지는 현상 방지 */
+    word-break: keep-all;
+    overflow-wrap: anywhere;
   }
   html {
     @apply font-sans;
   }
+  /* 헤딩과 단락: 마지막 줄에 한 단어/글자만 떨어지지 않게 균형 */
   h1, h2 {
     font-family: var(--font-heading);
     letter-spacing: -0.01em;
+    text-wrap: balance;
+    word-break: keep-all;
+  }
+  h3, h4, p {
+    text-wrap: pretty;
+    word-break: keep-all;
   }
 }
 
