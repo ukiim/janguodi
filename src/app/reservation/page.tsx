@@ -3,8 +3,7 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { CalendarCheck, Phone, Clock, Info } from "lucide-react";
+import { Phone, Info } from "lucide-react";
 import { NaverReservation } from "@/components/naver-reservation";
 import { getSiteSettings, withFallback } from "@/lib/site-settings";
 
@@ -21,6 +20,25 @@ export default async function ReservationPage() {
   const hours = withFallback(
     s.contact_hours,
     "평일 09:00~18:00 (주말·공휴일 휴무)"
+  );
+
+  // 어드민에서 입력된 예약 안내 (없으면 기본 3개 항목)
+  const noticeRaw = withFallback(
+    s.reservation_notice,
+    [
+      "예약은 체험일 3일 전까지 가능합니다.",
+      "예약 취소는 체험일 2일 전까지 무료입니다.",
+      "20인 이상 단체 예약은 전화로 문의 바랍니다.",
+    ].join("\n")
+  );
+  const noticeItems = noticeRaw
+    .split("\n")
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0);
+
+  const phoneNote = withFallback(
+    s.reservation_phone_note,
+    "온라인 예약이 어려우시면 전화로 예약하실 수 있습니다."
   );
   return (
     <>
@@ -50,25 +68,10 @@ export default async function ReservationPage() {
                   <Info className="h-5 w-5 text-primary" />
                   예약 안내
                 </h3>
-                <ul className="space-y-3 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <Clock className="h-4 w-4 mt-0.5 shrink-0" />
-                    <span>
-                      예약은 체험일 <strong>3일 전</strong>까지 가능합니다.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CalendarCheck className="h-4 w-4 mt-0.5 shrink-0" />
-                    <span>
-                      예약 취소는 체험일 <strong>2일 전</strong>까지 무료입니다.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Phone className="h-4 w-4 mt-0.5 shrink-0" />
-                    <span>
-                      20인 이상 단체 예약은 전화 문의 바랍니다.
-                    </span>
-                  </li>
+                <ul className="space-y-2 text-sm text-muted-foreground list-disc pl-5">
+                  {noticeItems.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
                 </ul>
               </CardContent>
             </Card>
@@ -79,8 +82,8 @@ export default async function ReservationPage() {
                   <Phone className="h-5 w-5 text-primary" />
                   전화 예약
                 </h3>
-                <p className="text-sm text-muted-foreground">
-                  온라인 예약이 어려우시면 전화로 예약하실 수 있습니다.
+                <p className="text-sm text-muted-foreground whitespace-pre-line">
+                  {phoneNote}
                 </p>
                 <div className="space-y-2">
                   <p className="font-semibold">{phone}</p>

@@ -6,7 +6,14 @@ import { saveSettings } from "./actions";
 import type { SiteSettings } from "@/lib/site-settings";
 import { BigInput, BigTextarea, FormSection } from "@/components/admin/big-input";
 import { StickyFormActions } from "@/components/admin/sticky-form-actions";
-import { Camera, Phone, MapPin, ShoppingBag, AlignLeft } from "lucide-react";
+import {
+  Camera,
+  Phone,
+  MapPin,
+  ShoppingBag,
+  AlignLeft,
+  CalendarCheck,
+} from "lucide-react";
 
 export function SettingsForm({ initial }: { initial: SiteSettings }) {
   const [pending, start] = useTransition();
@@ -117,8 +124,34 @@ export function SettingsForm({ initial }: { initial: SiteSettings }) {
         />
       </FormSection>
 
-      {/* 4. 스토어 연결 */}
-      <FormSection title="네이버 스마트스토어" step={4}>
+      {/* 예약 안내 */}
+      <FormSection title="예약 안내" step={4}>
+        <SectionIcon
+          icon={<CalendarCheck className="h-5 w-5" />}
+          text="예약 페이지(/reservation) 우측 사이드바의 안내 문구를 관리합니다."
+        />
+        <BigTextarea
+          label="예약 안내 항목 (한 줄에 한 항목)"
+          rows={5}
+          value={data.reservation_notice}
+          onChange={(e) => update("reservation_notice", e.target.value)}
+          placeholder={
+            "예약은 체험일 3일 전까지 가능합니다.\n예약 취소는 체험일 2일 전까지 무료입니다.\n20인 이상 단체 예약은 전화로 문의 바랍니다."
+          }
+          help="줄 바꿈으로 항목을 구분합니다. 빈 줄은 무시됩니다."
+        />
+        <BigTextarea
+          label="전화 예약 안내문"
+          rows={3}
+          value={data.reservation_phone_note}
+          onChange={(e) => update("reservation_phone_note", e.target.value)}
+          placeholder="온라인 예약이 어려우시면 전화로 예약하실 수 있습니다."
+          help="전화 예약 카드에 표시되는 한 문단 안내입니다."
+        />
+      </FormSection>
+
+      {/* 스토어 연결 */}
+      <FormSection title="네이버 스마트스토어" step={5}>
         <SectionIcon icon={<ShoppingBag className="h-5 w-5" />} text="스토어 페이지의 '네이버 스토어 방문' 버튼이 이 주소로 연결됩니다." />
         <BigInput
           label="스마트스토어 주소"
@@ -130,7 +163,7 @@ export function SettingsForm({ initial }: { initial: SiteSettings }) {
       </FormSection>
 
       {/* 5. 푸터 */}
-      <FormSection title="푸터 (페이지 하단)" step={5}>
+      <FormSection title="푸터 (페이지 하단)" step={6}>
         <SectionIcon icon={<AlignLeft className="h-5 w-5" />} text="모든 페이지 맨 아래에 표시되는 영역입니다." />
         <BigInput
           label="회사명 / 농장명"

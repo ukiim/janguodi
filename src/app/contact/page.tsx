@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Phone, Mail, MapPin, Clock, MessageCircle, Car, Bus } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Car, Bus } from "lucide-react";
 import { NaverMapEmbed } from "@/components/naver-map-embed";
 import { getSiteSettings, withFallback } from "@/lib/site-settings";
 
@@ -68,10 +68,7 @@ export default async function ContactPage() {
               {/* 문의 유형 안내 */}
               <Card>
                 <CardContent className="pt-6">
-                  <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
-                    <MessageCircle className="h-5 w-5 text-primary" />
-                    문의 유형 안내
-                  </h3>
+                  <h3 className="font-bold text-lg mb-3">문의 유형 안내</h3>
                   <div className="space-y-2 text-sm text-muted-foreground">
                     <p>
                       <strong>프로그램 문의</strong> — 체험 프로그램 내용, 일정,

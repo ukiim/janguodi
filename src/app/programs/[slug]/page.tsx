@@ -223,10 +223,9 @@ export default async function ProgramDetailPage({
             </div>
           </div>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Reservation Card */}
-            <Card className="sticky top-24">
+          {/* Sidebar — sticky 예약 카드 */}
+          <aside className="lg:sticky lg:top-24 lg:self-start">
+            <Card>
               <CardContent className="pt-6 space-y-4">
                 <h3 className="font-bold text-lg">예약 안내</h3>
                 <Separator />
@@ -260,30 +259,32 @@ export default async function ProgramDetailPage({
                 </p>
               </CardContent>
             </Card>
-
-            {/* Location */}
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-primary" />
-                  오시는 길
-                </h3>
-                <NaverMapEmbed
-                  address={mapAddress}
-                  title="오시는 길"
-                  className="aspect-[4/3] rounded-lg overflow-hidden mb-3"
-                />
-                <p className="text-sm text-muted-foreground">{mapAddress}</p>
-                {phone && (
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Tel. {phone}
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-          </div>
+          </aside>
         </div>
       </div>
+
+      {/* 오시는 길 — 본문 아래 별도 섹션 */}
+      <section className="container mx-auto px-4 pb-16">
+        <Card>
+          <CardContent className="pt-6">
+            <h2 className="font-bold text-xl mb-4 flex items-center gap-2">
+              <MapPin className="h-5 w-5 text-primary" />
+              오시는 길
+            </h2>
+            <NaverMapEmbed
+              address={mapAddress}
+              title="오시는 길"
+              className="aspect-[16/9] sm:aspect-[21/9] rounded-lg overflow-hidden mb-3"
+            />
+            <p className="text-sm text-muted-foreground">{mapAddress}</p>
+            {phone && (
+              <p className="text-sm text-muted-foreground mt-1">
+                Tel. {phone}
+              </p>
+            )}
+          </CardContent>
+        </Card>
+      </section>
     </>
   );
 }

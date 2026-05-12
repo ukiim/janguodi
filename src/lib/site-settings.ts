@@ -17,6 +17,9 @@ export type SettingKey =
   | "location_parking"
   // 스토어 연결
   | "smartstore_base_url"
+  // 예약 안내
+  | "reservation_notice"
+  | "reservation_phone_note"
   // 푸터
   | "footer_description"
   | "footer_company_name"
@@ -35,6 +38,8 @@ const ALL_KEYS: SettingKey[] = [
   "location_directions",
   "location_parking",
   "smartstore_base_url",
+  "reservation_notice",
+  "reservation_phone_note",
   "footer_description",
   "footer_company_name",
   "footer_business_info",
@@ -55,6 +60,8 @@ const EMPTY: SiteSettings = {
   location_directions: "",
   location_parking: "",
   smartstore_base_url: "",
+  reservation_notice: "",
+  reservation_phone_note: "",
   footer_description: "",
   footer_company_name: "",
   footer_business_info: "",
