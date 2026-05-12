@@ -79,8 +79,8 @@ export default async function HomePage() {
                 <span className="text-primary">오디·감귤</span> 체험농장
               </h1>
               <p className="text-base sm:text-lg text-muted-foreground max-w-xl mb-8 leading-relaxed">
-                오디를 따고 감귤을 수확하고, 직접 잼도 만들어 봅니다. 김해 장유의
-                작은 농장에서 가족과 함께 보내는 한나절.
+                탐스러운 오디를 따고, 새콤달콤한 감귤을 수확하고, 직접 잼도
+                만들어요. 가족과 함께 자연 속 특별한 하루를 선물하세요.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
@@ -177,18 +177,18 @@ export default async function HomePage() {
             {[
               {
                 icon: TreePine,
-                title: "농장에서 직접",
-                desc: "수확부터 시식까지, 농장에서 직접 보고 만져 보며 진행됩니다.",
+                title: "자연과 교감",
+                desc: "오디 농장과 감귤 하우스에서 직접 과일을 따며 자연의 소중함을 배웁니다.",
               },
               {
                 icon: Sun,
-                title: "체험 중심",
-                desc: "오디잼·감귤청 만들기까지, 직접 만들어 가져갈 수 있습니다.",
+                title: "체험 중심 학습",
+                desc: "오디잼, 감귤청 만들기 등 오감 체험으로 살아있는 교육을 합니다.",
               },
               {
                 icon: CalendarCheck,
-                title: "네이버 예약",
-                desc: "원하는 날짜와 인원을 골라 바로 신청할 수 있습니다.",
+                title: "간편한 예약",
+                desc: "네이버 예약을 통해 원하는 날짜에 간편하게 신청할 수 있습니다.",
               },
             ].map(({ icon: Icon, title, desc }) => (
               <div
@@ -341,11 +341,11 @@ export default async function HomePage() {
         />
         <div className="container mx-auto px-5 sm:px-6 text-center relative">
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3">
-            지금 예약하기
+            특별한 체험을 시작하세요
           </h2>
           <p className="text-primary-foreground/80 max-w-xl mx-auto mb-8 text-sm sm:text-base">
-            네이버 예약으로 원하는 날짜를 선택할 수 있습니다.
-            단체·맞춤 일정은 따로 문의해 주세요.
+            네이버 예약으로 간편하게 원하는 프로그램을 예약하고, 자연 속에서
+            잊지 못할 추억을 만들어 보세요.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link

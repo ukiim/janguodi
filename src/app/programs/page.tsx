@@ -37,7 +37,9 @@ export default async function ProgramsPage() {
             농촌 체험 프로그램
           </h1>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            계절마다 다른 작물을 직접 수확하고 만들어 봅니다.
+            자연 속에서 배우고 체험하는 다양한 프로그램을 만나보세요.
+            <br />
+            계절마다 특별한 경험이 여러분을 기다리고 있습니다.
           </p>
         </div>
       </section>

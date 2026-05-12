@@ -52,7 +52,8 @@ export default async function SnsPage() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-3">소식</h1>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            인스타그램과 블로그에서 농장의 이야기를 만나보세요.
+            김해장유오디감귤체험농장의 인스타그램과 네이버 블로그에서 다양한
+            소식을 만나보세요.
           </p>
         </div>
       </section>
