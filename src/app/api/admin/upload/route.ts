@@ -1,9 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import { put } from "@vercel/blob";
+import { v2 as cloudinary } from "cloudinary";
 import { auth } from "@/lib/auth";
+
+export const runtime = "nodejs";
 
 const MAX_BYTES = 8 * 1024 * 1024; // 8MB
 const ALLOWED = ["image/jpeg", "image/png", "image/webp"];
+
+function configured() {
+  return (
+    !!process.env.CLOUDINARY_CLOUD_NAME &&
+    !!process.env.CLOUDINARY_API_KEY &&
+    !!process.env.CLOUDINARY_API_SECRET
+  );
+}
 
 export async function POST(req: NextRequest) {
   // 관리자 인증 확인
@@ -12,23 +22,27 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "인증이 필요합니다." }, { status: 401 });
   }
 
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+  if (!configured()) {
     return NextResponse.json(
       {
         error:
-          "사진 저장소가 아직 설정되지 않았습니다. (Vercel Blob 연결 필요)",
+          "사진 저장소가 아직 설정되지 않았습니다. (Cloudinary 연결 필요)",
       },
       { status: 503 }
     );
   }
 
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+    secure: true,
+  });
+
   const form = await req.formData();
   const file = form.get("file");
   if (!(file instanceof File)) {
-    return NextResponse.json(
-      { error: "파일이 없습니다." },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "파일이 없습니다." }, { status: 400 });
   }
   if (!ALLOWED.includes(file.type)) {
     return NextResponse.json(
@@ -43,15 +57,16 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const ext = file.type === "image/png" ? "png" : file.type === "image/webp" ? "webp" : "jpg";
-  const filename = `uploads/${Date.now()}-${Math.round(Math.random() * 1e6)}.${ext}`;
-
   try {
-    const blob = await put(filename, file, {
-      access: "public",
-      contentType: file.type,
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
+    const dataUri = `data:${file.type};base64,${buffer.toString("base64")}`;
+
+    const result = await cloudinary.uploader.upload(dataUri, {
+      folder: "janguodi",
+      resource_type: "image",
     });
-    return NextResponse.json({ url: blob.url });
+    return NextResponse.json({ url: result.secure_url });
   } catch (err) {
     console.error("[upload] error", err);
     return NextResponse.json(
