@@ -13,7 +13,6 @@ const navItems = [
   { href: "/programs", label: "체험 프로그램" },
   { href: "/store", label: "스토어" },
   { href: "/notices", label: "공지사항" },
-  { href: "/sns", label: "소식" },
   { href: "/contact", label: "문의하기" },
 ];
 

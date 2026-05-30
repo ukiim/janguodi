@@ -94,7 +94,7 @@ export function SettingsForm({ initial }: { initial: SiteSettings }) {
 
       {/* 3. 소셜 미디어 */}
       <FormSection title="소셜 미디어" step={3}>
-        <SectionIcon icon={<Camera className="h-5 w-5" />} text="홈페이지 → 소식 메뉴에 자동으로 표시됩니다." />
+        <SectionIcon icon={<Camera className="h-5 w-5" />} text="입력하면 푸터에 인스타그램·블로그 아이콘 링크로 표시됩니다." />
         <BigInput
           label="인스타그램 아이디"
           value={data.instagram_handle}

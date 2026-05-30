@@ -129,14 +129,6 @@ export async function Footer() {
                   공지사항
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/sns"
-                  className="block py-3 text-muted-foreground hover:text-primary transition-colors"
-                >
-                  소식
-                </Link>
-              </li>
             </ul>
           </div>
 
