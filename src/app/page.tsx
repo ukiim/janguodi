@@ -13,6 +13,7 @@ import { TrackedLink } from "@/components/tracked-link";
 import { db, programs as programsTable, reviews as reviewsTable } from "@/db";
 import { asc, desc, eq } from "drizzle-orm";
 import { cn } from "@/lib/utils";
+import { getSiteSettings, buildNaverBlogUrl } from "@/lib/site-settings";
 import {
   TreePine,
   Sun,
@@ -25,7 +26,7 @@ import {
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [programs, recentReviews] = await Promise.all([
+  const [programs, recentReviews, settings] = await Promise.all([
     db
       .select()
       .from(programsTable)
@@ -46,7 +47,10 @@ export default async function HomePage() {
       .where(eq(reviewsTable.isPublished, true))
       .orderBy(desc(reviewsTable.createdAt))
       .limit(3),
+    getSiteSettings(),
   ]);
+
+  const blogUrl = buildNaverBlogUrl(settings);
 
   // 콜라주용 사진 (대표 이미지 3장 — 부족 시 갤러리에서 보충)
   const collageImages = programs
@@ -94,16 +98,30 @@ export default async function HomePage() {
                   프로그램 둘러보기
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
-                <TrackedLink
-                  href="/reservation"
-                  event="reservation_click"
-                  className={cn(
-                    buttonVariants({ variant: "outline", size: "lg" }),
-                    "text-base h-13 px-7"
-                  )}
-                >
-                  네이버 예약하기
-                </TrackedLink>
+                {blogUrl ? (
+                  <a
+                    href={blogUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      buttonVariants({ variant: "outline", size: "lg" }),
+                      "text-base h-13 px-7"
+                    )}
+                  >
+                    네이버 블로그
+                  </a>
+                ) : (
+                  <TrackedLink
+                    href="/reservation"
+                    event="reservation_click"
+                    className={cn(
+                      buttonVariants({ variant: "outline", size: "lg" }),
+                      "text-base h-13 px-7"
+                    )}
+                  >
+                    네이버 예약하기
+                  </TrackedLink>
+                )}
               </div>
             </div>
 

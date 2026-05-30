@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Camera } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { getSiteSettings, withFallback } from "@/lib/site-settings";
+import {
+  getSiteSettings,
+  withFallback,
+  buildInstagramUrl,
+  buildNaverBlogUrl,
+} from "@/lib/site-settings";
 import { TrackedPhone } from "@/components/tracked-link";
 
 const FALLBACKS = {
@@ -12,26 +17,6 @@ const FALLBACKS = {
   email: "준비 중",
   address: "주소 등록 예정",
 };
-
-function buildInstagramUrl(s: {
-  instagram_url: string;
-  instagram_handle: string;
-}) {
-  if (s.instagram_url.trim()) return s.instagram_url.trim();
-  if (s.instagram_handle.trim())
-    return `https://www.instagram.com/${s.instagram_handle.trim().replace(/^@/, "")}/`;
-  return "";
-}
-
-function buildNaverBlogUrl(s: {
-  naver_blog_url: string;
-  naver_blog_id: string;
-}) {
-  if (s.naver_blog_url.trim()) return s.naver_blog_url.trim();
-  if (s.naver_blog_id.trim())
-    return `https://blog.naver.com/${s.naver_blog_id.trim()}`;
-  return "";
-}
 
 export async function Footer() {
   const s = await getSiteSettings();
