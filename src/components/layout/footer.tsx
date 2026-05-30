@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Phone, Mail, MapPin, Camera } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { getSiteSettings, withFallback } from "@/lib/site-settings";
+import { TrackedPhone } from "@/components/tracked-link";
 
 const FALLBACKS = {
   companyName: "김해장유오디감귤체험농장",
@@ -138,7 +139,10 @@ export async function Footer() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-primary" />
-                <span>{phone}</span>
+                <TrackedPhone
+                  phone={phone}
+                  className="hover:text-primary transition-colors"
+                />
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-primary" />

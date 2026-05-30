@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
+import { TrackedLink } from "@/components/tracked-link";
 import { db, programs as programsTable, reviews as reviewsTable } from "@/db";
 import { asc, desc, eq } from "drizzle-orm";
 import { cn } from "@/lib/utils";
@@ -93,15 +94,16 @@ export default async function HomePage() {
                   프로그램 둘러보기
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
-                <Link
+                <TrackedLink
                   href="/reservation"
+                  event="reservation_click"
                   className={cn(
                     buttonVariants({ variant: "outline", size: "lg" }),
                     "text-base h-13 px-7"
                   )}
                 >
                   네이버 예약하기
-                </Link>
+                </TrackedLink>
               </div>
             </div>
 
@@ -351,24 +353,26 @@ export default async function HomePage() {
             잊지 못할 추억을 만들어 보세요.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
+            <TrackedLink
               href="/reservation"
+              event="reservation_click"
               className={cn(
                 buttonVariants({ size: "lg", variant: "secondary" }),
                 "text-base h-13 px-7"
               )}
             >
               지금 예약하기
-            </Link>
-            <Link
+            </TrackedLink>
+            <TrackedLink
               href="/store"
+              event="store_click"
               className={cn(
                 buttonVariants({ size: "lg", variant: "outline" }),
                 "text-base h-13 px-7 bg-transparent border-primary-foreground/60 text-primary-foreground hover:bg-primary-foreground/10"
               )}
             >
               스토어 방문하기
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>

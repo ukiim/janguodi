@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Phone, Mail, MapPin, Clock, Car, Bus } from "lucide-react";
 import { NaverMapEmbed } from "@/components/naver-map-embed";
+import { TrackedPhone } from "@/components/tracked-link";
 import { getSiteSettings, withFallback } from "@/lib/site-settings";
 
 export const dynamic = "force-dynamic";
@@ -47,7 +48,10 @@ export default async function ContactPage() {
                   <div className="space-y-3 text-sm">
                     <div className="flex items-center gap-3">
                       <Phone className="h-4 w-4 text-primary shrink-0" />
-                      <span className="font-medium">{phone}</span>
+                      <TrackedPhone
+                        phone={phone}
+                        className="font-medium hover:text-primary transition-colors"
+                      />
                     </div>
                     <div className="flex items-center gap-3">
                       <Mail className="h-4 w-4 text-primary shrink-0" />

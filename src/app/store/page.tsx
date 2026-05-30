@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
+import { TrackedLink } from "@/components/tracked-link";
 import { cn } from "@/lib/utils";
 import { STORE_BASE } from "@/data/products";
 import { db, products as productsTable } from "@/db";
@@ -52,12 +53,12 @@ export default async function StorePage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
-              <a
+              <TrackedLink
                 key={product.id}
                 href={product.storeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group"
+                event="store_click"
+                external
+                className="group block"
               >
                 <Card className="h-full hover:shadow-lg transition-shadow overflow-hidden pt-0">
                   <div className="relative aspect-square bg-gradient-to-br from-primary/5 to-accent/5 overflow-hidden">
@@ -97,7 +98,7 @@ export default async function StorePage() {
                     </div>
                   </CardContent>
                 </Card>
-              </a>
+              </TrackedLink>
             ))}
           </div>
         </div>
@@ -112,15 +113,15 @@ export default async function StorePage() {
           <p className="text-muted-foreground mb-6">
             네이버 스마트스토어에서 전체 상품을 확인하세요
           </p>
-          <a
+          <TrackedLink
             href={storeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            event="store_click"
+            external
             className={buttonVariants({ size: "lg" })}
           >
             스마트스토어 방문하기
             <ExternalLink className="ml-2 h-4 w-4" />
-          </a>
+          </TrackedLink>
         </div>
       </section>
     </>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { buttonVariants } from "@/components/ui/button";
+import { TrackedLink, TrackedPhone } from "@/components/tracked-link";
 import { cn } from "@/lib/utils";
 import { NaverMapEmbed } from "@/components/naver-map-embed";
 import { Badge } from "@/components/ui/badge";
@@ -248,12 +249,13 @@ export default async function ProgramDetailPage({
                   </div>
                 </div>
                 <Separator />
-                <Link
+                <TrackedLink
                   href="/reservation"
+                  event="reservation_click"
                   className={cn(buttonVariants({ size: "lg" }), "w-full")}
                 >
                   네이버 예약하기
-                </Link>
+                </TrackedLink>
                 <p className="text-xs text-muted-foreground text-center">
                   단체 예약(20인 이상)은 전화 문의 바랍니다
                 </p>
@@ -279,7 +281,11 @@ export default async function ProgramDetailPage({
             <p className="text-sm text-muted-foreground">{mapAddress}</p>
             {phone && (
               <p className="text-sm text-muted-foreground mt-1">
-                Tel. {phone}
+                Tel.{" "}
+                <TrackedPhone
+                  phone={phone}
+                  className="hover:text-primary transition-colors"
+                />
               </p>
             )}
           </CardContent>

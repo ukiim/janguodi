@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { Phone, Info } from "lucide-react";
 import { NaverReservation } from "@/components/naver-reservation";
+import { TrackedPhone } from "@/components/tracked-link";
 import { getSiteSettings, withFallback } from "@/lib/site-settings";
 
 export const dynamic = "force-dynamic";
@@ -86,7 +87,10 @@ export default async function ReservationPage() {
                   {phoneNote}
                 </p>
                 <div className="space-y-2">
-                  <p className="font-semibold">{phone}</p>
+                  <TrackedPhone
+                    phone={phone}
+                    className="block font-semibold hover:text-primary transition-colors"
+                  />
                   <p className="text-xs text-muted-foreground">{hours}</p>
                 </div>
               </CardContent>
