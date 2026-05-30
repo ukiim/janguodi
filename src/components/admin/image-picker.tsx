@@ -2,9 +2,11 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { ImageIcon, FolderOpen } from "lucide-react";
+import { ImageIcon, FolderOpen, Upload, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 import { FieldShell } from "./big-input";
+import { uploadImageFile } from "./upload-image";
 import {
   Dialog,
   DialogContent,
@@ -14,9 +16,7 @@ import {
 } from "@/components/ui/dialog";
 
 /**
- * 사용 가능한 사진 카탈로그.
- * public/images/*.jpg 와 매칭됩니다.
- * 새 사진을 추가하면 이 목록에도 추가하세요.
+ * 사용 가능한 사진 카탈로그 (미리 준비된 기본 사진).
  */
 const PROGRAM_IMAGES = [
   { path: "/images/mulberry-picking.jpg", label: "오디 수확" },
@@ -45,7 +45,7 @@ export function ImagePicker({
   onChange,
   catalog = "program",
   required,
-  help = "현재는 미리 업로드된 사진 중 하나를 선택할 수 있습니다.",
+  help = "내 컴퓨터에서 사진을 올리거나, 준비된 사진 중에서 고를 수 있습니다.",
 }: {
   label?: string;
   value: string;
@@ -56,6 +56,8 @@ export function ImagePicker({
 }) {
   const [open, setOpen] = React.useState(false);
   const [imgError, setImgError] = React.useState(false);
+  const [uploading, setUploading] = React.useState(false);
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
     setImgError(false);
@@ -63,11 +65,27 @@ export function ImagePicker({
 
   const items = IMAGE_CATALOG[catalog];
 
+  async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = ""; // 같은 파일 재선택 가능하도록
+    if (!file) return;
+    setUploading(true);
+    try {
+      const url = await uploadImageFile(file);
+      onChange(url);
+      toast.success("사진이 업로드되었습니다.");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "업로드 실패");
+    } finally {
+      setUploading(false);
+    }
+  }
+
   return (
     <FieldShell label={label} required={required} help={help}>
       <div className="flex flex-col sm:flex-row gap-4">
         {/* 미리보기 */}
-        <div className="w-full sm:w-48 aspect-[4/3] rounded-lg border-2 bg-muted/30 overflow-hidden flex items-center justify-center shrink-0">
+        <div className="w-full sm:w-48 aspect-[4/3] rounded-lg border-2 bg-muted/30 overflow-hidden flex items-center justify-center shrink-0 relative">
           {value && !imgError ? (
             <Image
               src={value}
@@ -86,23 +104,53 @@ export function ImagePicker({
               </p>
             </div>
           )}
+          {uploading && (
+            <div className="absolute inset-0 bg-background/70 flex items-center justify-center">
+              <Loader2 className="h-7 w-7 animate-spin text-primary" />
+            </div>
+          )}
         </div>
 
-        {/* 선택/입력 */}
+        {/* 버튼들 */}
         <div className="flex-1 space-y-2">
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            className="hidden"
+            onChange={handleFile}
+          />
+          <button
+            type="button"
+            disabled={uploading}
+            onClick={() => fileInputRef.current?.click()}
+            className={cn(
+              "w-full h-14 rounded-lg border-2 border-primary bg-primary",
+              "text-primary-foreground text-base font-semibold hover:bg-primary/90",
+              "flex items-center justify-center gap-2 transition-colors disabled:opacity-60"
+            )}
+          >
+            {uploading ? (
+              <Loader2 className="h-5 w-5 animate-spin" />
+            ) : (
+              <Upload className="h-5 w-5" />
+            )}
+            {uploading ? "올리는 중…" : "내 컴퓨터에서 사진 올리기"}
+          </button>
+
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger
               render={
                 <button
                   type="button"
                   className={cn(
-                    "w-full h-14 rounded-lg border-2 border-primary/40 bg-primary/5",
-                    "text-primary text-base font-semibold hover:bg-primary/10",
+                    "w-full h-12 rounded-lg border-2 border-primary/40 bg-primary/5",
+                    "text-primary text-sm font-semibold hover:bg-primary/10",
                     "flex items-center justify-center gap-2 transition-colors"
                   )}
                 >
-                  <FolderOpen className="h-5 w-5" />
-                  사진 고르기
+                  <FolderOpen className="h-4 w-4" />
+                  준비된 사진에서 고르기
                 </button>
               }
             />
@@ -150,21 +198,6 @@ export function ImagePicker({
               </div>
             </DialogContent>
           </Dialog>
-
-          <input
-            type="text"
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            placeholder="/images/사진파일.jpg"
-            className={cn(
-              "w-full h-12 px-4 rounded-md border border-input bg-background",
-              "text-sm text-muted-foreground font-mono",
-              "focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary"
-            )}
-          />
-          <p className="text-xs text-muted-foreground">
-            ⓘ 직접 입력도 가능합니다 (고급 사용자용)
-          </p>
         </div>
       </div>
     </FieldShell>
