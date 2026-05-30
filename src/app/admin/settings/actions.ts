@@ -5,10 +5,12 @@ import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import type { SiteSettings } from "@/lib/site-settings";
+import { requireAdmin } from "@/lib/auth-guard";
 
 export type SettingsFormData = SiteSettings;
 
 export async function saveSettings(data: SettingsFormData) {
+  await requireAdmin();
   for (const [key, value] of Object.entries(data) as [
     keyof SiteSettings,
     string,

@@ -61,22 +61,41 @@ async function main() {
       .onConflictDoNothing({ target: programs.slug });
   }
 
-  // 3. 상품
-  console.log(`[seed] 상품 ${productData.length}개 등록`);
-  for (const [i, p] of productData.entries()) {
-    await db.insert(products).values({
-      name: p.name,
-      description: p.description,
-      price: p.price,
-      image: p.image,
-      storeUrl: p.storeUrl,
-      badge: p.badge ?? null,
-      sortOrder: i,
-      isPublished: true,
-    });
+  // 3. 상품 (이미 있으면 건너뜀 — 멱등성, 중복 삽입 방지)
+  const existingProducts = await db
+    .select({ id: products.id })
+    .from(products)
+    .limit(1);
+  if (existingProducts.length === 0) {
+    console.log(`[seed] 상품 ${productData.length}개 등록`);
+    for (const [i, p] of productData.entries()) {
+      await db.insert(products).values({
+        name: p.name,
+        description: p.description,
+        price: p.price,
+        image: p.image,
+        storeUrl: p.storeUrl,
+        badge: p.badge ?? null,
+        sortOrder: i,
+        isPublished: true,
+      });
+    }
+  } else {
+    console.log("[seed] 상품이 이미 있어 건너뜀");
   }
 
-  // 4. 후기 (programs 데이터에서 추출)
+  // 4. 후기 (programs 데이터에서 추출, 이미 있으면 건너뜀)
+  const existingReviews = await db
+    .select({ id: reviews.id })
+    .from(reviews)
+    .limit(1);
+  if (existingReviews.length > 0) {
+    console.log("[seed] 후기가 이미 있어 건너뜀");
+    console.log("[seed] 완료!");
+    console.log(`이메일: ${adminEmail}`);
+    console.log(`비밀번호: ${adminPassword}  (꼭 변경하세요)`);
+    return;
+  }
   console.log(`[seed] 후기 등록`);
   for (const p of programData) {
     for (const r of p.reviews) {

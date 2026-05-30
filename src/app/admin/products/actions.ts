@@ -4,6 +4,7 @@ import { db, products, type NewProduct } from "@/db";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { requireAdmin } from "@/lib/auth-guard";
 
 export type ProductFormData = {
   name: string;
@@ -36,18 +37,21 @@ function revalidatePublic() {
 }
 
 export async function createProduct(data: ProductFormData) {
+  await requireAdmin();
   await db.insert(products).values(buildPayload(data));
   revalidatePublic();
   redirect("/admin/products");
 }
 
 export async function updateProduct(id: number, data: ProductFormData) {
+  await requireAdmin();
   await db.update(products).set(buildPayload(data)).where(eq(products.id, id));
   revalidatePublic();
   redirect("/admin/products");
 }
 
 export async function deleteProduct(id: number) {
+  await requireAdmin();
   await db.delete(products).where(eq(products.id, id));
   revalidatePublic();
 }

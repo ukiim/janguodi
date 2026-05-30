@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { STORE_BASE } from "@/data/products";
 import { db, products as productsTable } from "@/db";
 import { asc, eq } from "drizzle-orm";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ShoppingBag } from "lucide-react";
 import { getSiteSettings, withFallback } from "@/lib/site-settings";
 
 export const dynamic = "force-dynamic";
@@ -51,6 +51,14 @@ export default async function StorePage() {
       {/* Products Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
+          {products.length === 0 ? (
+            <Card className="max-w-xl mx-auto">
+              <CardContent className="pt-12 pb-12 text-center text-muted-foreground">
+                <ShoppingBag className="h-10 w-10 mx-auto mb-3 opacity-40" />
+                <p className="text-base">아직 등록된 상품이 없습니다.</p>
+              </CardContent>
+            </Card>
+          ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
               <TrackedLink
@@ -101,6 +109,7 @@ export default async function StorePage() {
               </TrackedLink>
             ))}
           </div>
+          )}
         </div>
       </section>
 

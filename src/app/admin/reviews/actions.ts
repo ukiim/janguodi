@@ -3,6 +3,7 @@
 import { db, reviews, type NewReview } from "@/db";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
+import { requireAdmin } from "@/lib/auth-guard";
 
 export async function createReview(data: {
   programSlug: string;
@@ -11,6 +12,7 @@ export async function createReview(data: {
   rating: number;
   isPublished: boolean;
 }) {
+  await requireAdmin();
   const payload: NewReview = {
     programSlug: data.programSlug.trim(),
     name: data.name.trim(),
@@ -24,6 +26,7 @@ export async function createReview(data: {
 }
 
 export async function togglePublishReview(id: number, value: boolean) {
+  await requireAdmin();
   const [r] = await db
     .select({ slug: reviews.programSlug })
     .from(reviews)
@@ -38,6 +41,7 @@ export async function togglePublishReview(id: number, value: boolean) {
 }
 
 export async function deleteReview(id: number) {
+  await requireAdmin();
   const [r] = await db
     .select({ slug: reviews.programSlug })
     .from(reviews)

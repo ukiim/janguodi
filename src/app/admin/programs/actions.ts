@@ -4,6 +4,7 @@ import { db, programs, type NewProgram } from "@/db";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { requireAdmin } from "@/lib/auth-guard";
 
 export type ProgramFormData = {
   slug: string;
@@ -51,18 +52,21 @@ function revalidatePublic(slug?: string) {
 }
 
 export async function createProgram(data: ProgramFormData) {
+  await requireAdmin();
   await db.insert(programs).values(buildPayload(data));
   revalidatePublic(data.slug);
   redirect("/admin/programs");
 }
 
 export async function updateProgram(id: number, data: ProgramFormData) {
+  await requireAdmin();
   await db.update(programs).set(buildPayload(data)).where(eq(programs.id, id));
   revalidatePublic(data.slug);
   redirect("/admin/programs");
 }
 
 export async function deleteProgram(id: number) {
+  await requireAdmin();
   const [target] = await db
     .select({ slug: programs.slug })
     .from(programs)

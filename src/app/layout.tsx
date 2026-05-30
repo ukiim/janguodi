@@ -10,6 +10,15 @@ export const metadata: Metadata = {
   },
   description:
     "김해 장유 오디·감귤 체험농장. 오디 수확, 감귤 따기, 잼 만들기 등 가족·단체 농촌 체험 프로그램. 네이버 예약으로 간편하게 신청하세요.",
+  metadataBase: new URL("https://odifarm.co.kr"),
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    siteName: "김해장유오디감귤체험농장",
+    title: "김해장유오디감귤체험농장 | 농촌 체험 프로그램",
+    description:
+      "김해 장유 오디·감귤 체험농장. 오디 수확, 감귤 따기, 잼 만들기 등 가족·단체 농촌 체험 프로그램.",
+  },
   keywords: [
     "김해체험농장",
     "장유체험농장",
